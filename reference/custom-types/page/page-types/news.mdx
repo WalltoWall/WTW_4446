@@ -1,0 +1,71 @@
+---
+parent: Page Types
+parent_url: /reference/custom-types/page/page-types
+title: News
+summary: >-
+  Identifies a page as a news post.
+---
+
+import { Field, FieldsTable, Callout } from 'reference'
+
+# Use Case
+
+Using this page type identifies the page as a news post. This makes it available
+as a news post to other sections of the site.
+
+# Required Page Tag
+
+<Callout type="warning">
+
+When using this page type, add the **News** tag to the page.
+
+</Callout>
+
+# Visual Changes
+
+Listed below are all the changes exclusive to the **News** page type that
+differentiate it from a normal **Page**.
+
+## News Post Header
+
+News post metadata, such as title and publish date, are listed in a special
+slice at the start of the page.
+
+# Fields
+
+<FieldsTable>
+  <Field
+    name="Description"
+    type="Text"
+    description="Brief synopsis of the news post."
+    required={true}
+  />
+  <Field
+    name="Date"
+    type="Date"
+    description="Date of publication for the news post."
+    required={true}
+  />
+  <Field
+    name="Featured Image"
+    type="Media"
+    description="Large photo representing the news post."
+    required={true}
+  />
+</FieldsTable>
+
+## Recommendations
+
+### Description
+
+Keep the Description to 120 characters or less. The description will be
+presented when listing multiple articles to give the visitor an overview of the
+article.
+
+### Featured Image
+
+This image will be used anywhere the news post is listed outside of its own page
+and should be representative of the news post as a whole.
+
+Image dimensions should be between **1000px** and **2000px** in either
+direction. File size should be no more than **500 KB**.

@@ -1,0 +1,80 @@
+---
+parent: Custom Types
+parent_url: /reference/custom-types/
+title: Navigation
+summary: >-
+  Represents a list of navigation links.
+---
+
+import {
+  LinkCard,
+  Field,
+  FieldsTable,
+  Callout,
+  SliceExamples,
+  Example,
+} from 'reference'
+
+# Use Case
+
+The list of links used in the site's header and footer is managed through
+Navigation documents.
+
+<Callout type="info" heading="Heads Up!">
+
+There are two documents that are already defined named "Primary" and
+"Secondary". These documents control the links that are displayed within the
+site's header and footer.
+
+**Do not delete these documents.**
+
+</Callout>
+
+# Slices
+
+Navigation items are grouped using **Nav Item** slices. For example, to have a
+top-level "About Us" page with "Careers" as a child:
+
+1. Create a Nav Item slice.
+2. Set "About Us" as the name.
+3. Add "Careers" as an item in the repeatable zone.
+
+**Nav Item** is the only slice available for Navigation documents. The following
+fields refer to **Nav Item**.
+
+# Fields
+
+<FieldsTable>
+  <Field
+    name="Name"
+    type="Text"
+    description="Text to display for the link."
+    required={true}
+  />
+  <Field
+    name="Link"
+    type="Link"
+    description="Link to navigate to when clicking on the link. Can be internal or external."
+    required={true}
+  />
+</FieldsTable>
+
+# Repeatable Fields
+
+Each item in the repeatable zone represents a child link. The order of the items
+determines the order of the links.
+
+<FieldsTable>
+  <Field
+    name="Name"
+    type="Text"
+    description="Text to display for the link."
+    required={true}
+  />
+  <Field
+    name="Link"
+    type="Link"
+    description="Link to navigate to when clicking on the link. Can be internal or external."
+    required={true}
+  />
+</FieldsTable>

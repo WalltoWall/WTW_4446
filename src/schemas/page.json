@@ -1,0 +1,346 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title"
+      }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID"
+      }
+    },
+    "meta_title": {
+      "type": "Text",
+      "config": {
+        "label": "Meta Title"
+      }
+    },
+    "meta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Meta Description"
+      }
+    },
+    "parent": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["page"],
+        "label": "Parent"
+      }
+    },
+    "webfonts": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "css_url": {
+            "type": "Text",
+            "config": {
+              "label": "CSS URL",
+              "placeholder": "CSS file containing @font-face declarations"
+            }
+          }
+        },
+        "label": "Webfonts"
+      }
+    }
+  },
+  "Body": {
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "full_width_image": [],
+          "full_viewport_image": [],
+          "header": [],
+          "footer": [],
+          "text": [],
+          "judges": []
+        },
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Flexible text in one or two column layout",
+            "icon": "text_fields",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Text Color"
+                }
+              },
+              "link_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Link Color"
+                }
+              },
+              "font_family": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Font Family"
+                }
+              },
+              "heading_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Heading Image"
+                }
+              },
+              "heading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Heading"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading1, strong, em, hyperlink, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Text"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "full_width_image": {
+            "type": "Slice",
+            "fieldset": "Full Width Image",
+            "description": "Image sized to the full width of the window",
+            "icon": "image",
+            "display": "list",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [
+                    {
+                      "name": "Tablet",
+                      "width": 768,
+                      "height": null
+                    },
+                    {
+                      "name": "Mobile",
+                      "width": 375,
+                      "height": null
+                    }
+                  ],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "full_viewport_image": {
+            "type": "Slice",
+            "fieldset": "Full Viewport Image",
+            "description": "Image sized to the full width and height of the window",
+            "icon": "panorama",
+            "display": "list",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [
+                    {
+                      "name": "Tablet",
+                      "width": 768,
+                      "height": null
+                    },
+                    {
+                      "name": "Mobile",
+                      "width": 375,
+                      "height": null
+                    }
+                  ],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "header": {
+            "type": "Slice",
+            "fieldset": "Header",
+            "description": "Primary top bar with navigation.",
+            "icon": "vertical_align_top",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "link_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Link Color"
+                }
+              },
+              "font_family": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Font Family"
+                }
+              },
+              "logo": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Logo"
+                }
+              },
+              "navigation": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "customtypes": ["navigation"],
+                  "label": "Navigation"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "footer": {
+            "type": "Slice",
+            "fieldset": "Footer",
+            "description": "Primary bottom bar with navigation.",
+            "icon": "vertical_align_bottom",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "link_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Link Color"
+                }
+              },
+              "text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Text Color"
+                }
+              },
+              "font_family": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Font Family"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "judges": {
+            "type": "Slice",
+            "fieldset": "Judges",
+            "description": "List of judges with photos and biographies.",
+            "icon": "people",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Text Color"
+                }
+              },
+              "font_family": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Font Family"
+                }
+              },
+              "heading_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Heading Image"
+                }
+              },
+              "heading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Heading"
+                }
+              }
+            },
+            "repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [
+                    {
+                      "name": "Tablet",
+                      "width": 768,
+                      "height": null
+                    },
+                    {
+                      "name": "Mobile",
+                      "width": 375,
+                      "height": null
+                    }
+                  ],
+                  "label": "Image"
+                }
+              },
+              "image_side": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Image Side"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading1, heading2, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Text"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

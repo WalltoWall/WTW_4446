@@ -1,0 +1,81 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title"
+      }
+    },
+    "site_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Site Name"
+      }
+    },
+    "site_description": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Site Description"
+      }
+    },
+    "live_homepage": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["page"],
+        "label": "Live Homepage"
+      }
+    },
+    "site_copyright": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Site Copyright"
+      }
+    },
+    "facebook_handle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Facebook Handle"
+      }
+    },
+    "twitter_handle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Twitter Handle"
+      }
+    },
+    "instagram_handle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Instagram Handle"
+      }
+    },
+    "preview_map": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "api_id": {
+            "type": "Text",
+            "config": {
+              "label": "API ID"
+            }
+          },
+          "page": {
+            "type": "Link",
+            "config": {
+              "label": "Page"
+            }
+          }
+        },
+        "label": "Preview Map"
+      }
+    }
+  }
+}
