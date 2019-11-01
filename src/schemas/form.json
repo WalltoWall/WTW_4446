@@ -1,0 +1,294 @@
+{
+  "Main": {
+    "name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Name"
+      }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "uid"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "choices": {
+          "text_field": {
+            "type": "Slice",
+            "fieldset": "Text Field",
+            "description": "Add a text field to your form.",
+            "icon": "text_fields",
+            "display": "list",
+            "non-repeat": {
+              "required": {
+                "type": "Select",
+                "config": {
+                  "options": ["Yes", "No"],
+                  "default_value": "Yes",
+                  "label": "Required"
+                }
+              },
+              "width": {
+                "type": "Select",
+                "config": {
+                  "options": ["Full", "Half"],
+                  "default_value": "Full",
+                  "label": "Width"
+                }
+              },
+              "type": {
+                "type": "Select",
+                "config": {
+                  "options": ["Plain Text", "Email", "Phone Number"],
+                  "default_value": "Plain Text",
+                  "label": "Type"
+                }
+              },
+              "label": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Label"
+                }
+              },
+              "help_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "label": "Help Text"
+                }
+              },
+              "placeholder_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Placeholder Text"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "checkbox_field": {
+            "type": "Slice",
+            "fieldset": "Checkbox Field",
+            "description": "Add one or more checkboxes to your form.",
+            "icon": "check_box",
+            "display": "list",
+            "non-repeat": {
+              "minimum_checks": {
+                "type": "Number",
+                "config": {
+                  "label": "Minimum Checks"
+                }
+              },
+              "maximum_checks": {
+                "type": "Number",
+                "config": {
+                  "label": "Maximum Checks"
+                }
+              },
+              "width": {
+                "type": "Select",
+                "config": {
+                  "options": ["Full", "Half"],
+                  "default_value": "Full",
+                  "label": "Width"
+                }
+              },
+              "label": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Label"
+                }
+              },
+              "help_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Help Text"
+                }
+              }
+            },
+            "repeat": {
+              "option": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Option"
+                }
+              }
+            }
+          },
+          "select_field": {
+            "type": "Slice",
+            "fieldset": "Select Field",
+            "description": "Add a dropdown select field to your form.",
+            "icon": "arrow_drop_down_circle",
+            "display": "list",
+            "non-repeat": {
+              "required": {
+                "type": "Select",
+                "config": {
+                  "options": ["Yes", "No"],
+                  "default_value": "Yes",
+                  "label": "Required"
+                }
+              },
+              "width": {
+                "type": "Select",
+                "config": {
+                  "options": ["Full", "Half"],
+                  "default_value": "Full",
+                  "label": "Width"
+                }
+              },
+              "label": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Label"
+                }
+              },
+              "help_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Help Text"
+                }
+              },
+              "default_option": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Default Option"
+                }
+              }
+            },
+            "repeat": {
+              "option": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Option"
+                }
+              }
+            }
+          },
+          "radio_field": {
+            "type": "Slice",
+            "fieldset": "Radio Field",
+            "description": "Add one or more radio fields to your form.",
+            "icon": "radio_button_checked",
+            "display": "list",
+            "non-repeat": {
+              "label": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Label"
+                }
+              },
+              "help_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Help Text"
+                }
+              },
+              "default_option": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Default Option"
+                }
+              }
+            },
+            "repeat": {
+              "option": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Option"
+                }
+              }
+            }
+          },
+          "textarea": {
+            "type": "Slice",
+            "fieldset": "Textarea",
+            "description": "Add a large textarea field to your form.",
+            "icon": "wrap_text",
+            "display": "list",
+            "non-repeat": {
+              "required": {
+                "type": "Select",
+                "config": {
+                  "options": ["Yes", "No"],
+                  "default_value": "Yes",
+                  "label": "Required"
+                }
+              },
+              "label": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Label"
+                }
+              },
+              "help_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Help Text"
+                }
+              },
+              "placeholder_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Placeholder Text"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "help_text": {
+            "type": "Slice",
+            "fieldset": "Help Text",
+            "description": "Add helper text to help users.",
+            "icon": "help",
+            "display": "list",
+            "non-repeat": {
+              "label": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Label"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading1, strong, em, hyperlink, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Text"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  }
+}
