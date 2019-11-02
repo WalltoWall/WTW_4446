@@ -76,6 +76,12 @@
                   "label": "Background Color"
                 }
               },
+              "heading_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Heading Color"
+                }
+              },
               "text_color": {
                 "type": "Color",
                 "config": {
@@ -157,6 +163,47 @@
             "icon": "panorama",
             "display": "list",
             "non-repeat": {
+              "text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Text Color"
+                }
+              },
+              "button_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Color"
+                }
+              },
+              "button_text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Text Color"
+                }
+              },
+              "font_family": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Font Family"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Text"
+                }
+              },
+              "text_vertical_alignment": {
+                "type": "Select",
+                "config": {
+                  "options": ["Center", "Top", "Bottom"],
+                  "default_value": "Center",
+                  "label": "Text Vertical Alignment"
+                }
+              },
               "image": {
                 "type": "Image",
                 "config": {
@@ -177,7 +224,22 @@
                 }
               }
             },
-            "repeat": {}
+            "repeat": {
+              "button_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Button Text"
+                }
+              },
+              "button_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Button Link"
+                }
+              }
+            }
           },
           "header": {
             "type": "Slice",
