@@ -1,5 +1,6 @@
 export { Anchor } from './Anchor'
 export { BoundedBox } from './BoundedBox'
+export { Button } from './Button'
 export { HTMLContent } from './HTMLContent'
 export { Heading } from './Heading'
 export { PageWrapper } from './PageWrapper'

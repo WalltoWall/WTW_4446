@@ -5,7 +5,8 @@ import { PageTemplate as PageTemplateBase } from 'gatsby-theme-ww-prismic/src/te
 
 import { PageWrapper } from 'src/components'
 
-export const injectSlices = (list = []) => list
+export const injectSlices = (list = []) =>
+  list.filter(x => x.__typename !== 'PrismicPageBodyHeader')
 
 export const PageTemplate = ({
   mapOverrides,

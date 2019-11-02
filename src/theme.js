@@ -32,12 +32,13 @@ const theme = {
    * Fonts
    */
   fonts: {
-    sans: 'sans-serif',
+    sans: 'Inter, sans-serif',
     serif: 'serif',
   },
   fontSizeScales: {
     b: linearScale('14px', '24px', { count }),
-    l: linearScale('30px', '50px', { count }),
+    m: linearScale('20px', '28px', { count }),
+    l: linearScale('30px', '56px', { count }),
   },
   fontWeights: {
     light: 300,
@@ -46,9 +47,12 @@ const theme = {
     semibold: 600,
     bold: 700,
     heavy: 800,
+    black: 900,
   },
   lineHeights: {
-    copy: 1.4,
+    solid: 1,
+    title: 1,
+    copy: 1.3,
   },
 
   /***
@@ -56,6 +60,7 @@ const theme = {
    */
   spaceScales: {
     0: linearScale(0, 0, { count }),
+    's-': linearScale('8px', '20px', { count }),
     s: linearScale('10px', '30px', { count }),
     'm-': linearScale('20px', '50px', { count }),
     m: linearScale('20px', '60px', { count }),

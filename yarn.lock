@@ -13770,6 +13770,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-inter@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/typeface-inter/-/typeface-inter-3.10.0.tgz#04a55d62e2dc3f60db3afab5d8a547e067692bc6"
+  integrity sha512-WuXE+TaJLB8pdMuvIVY3LfT5UQqndR8+Js0xfhNpdXlsEx0Abwd1bzg4w4YWl2eoOmmLYrRpx6UJJ7a7/q6wZQ==
+
 ua-parser-js@^0.7.18:
   version "0.7.19"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"
