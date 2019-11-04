@@ -41,6 +41,7 @@ const theme = {
     l: linearScale('30px', '56px', { count }),
   },
   fontWeights: {
+    thin: 200,
     light: 300,
     normal: 400,
     medium: 500,
@@ -51,7 +52,8 @@ const theme = {
   },
   lineHeights: {
     solid: 1,
-    title: 1,
+    title: 1.2,
+    copyTight: 1.2,
     copy: 1.3,
   },
 
@@ -81,7 +83,9 @@ const theme = {
    * Z Indices
    */
   zIndices: {
-    header: 1,
+    header: 2,
+    desktopNav: 2,
+    navOverlay: 1,
   },
 
   /***
@@ -93,7 +97,7 @@ const theme = {
     },
     trackedCaps: {
       textTransform: 'uppercase',
-      letterSpacing: '0.1em',
+      letterSpacing: '0.2em',
     },
   },
   boxStyles: {
