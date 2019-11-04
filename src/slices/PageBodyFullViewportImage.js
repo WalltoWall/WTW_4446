@@ -5,7 +5,7 @@ import { notEmpty, getRichText, getImageFluid } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
-import { Box, Flex, ImageContainer, Image, Link } from 'system'
+import { Box, Flex, ImageContainer, Image, Text, Link } from 'system'
 import { BoundedBox, Button, HTMLContent } from 'src/components'
 
 const normalizedTextVerticalAlignments = {
@@ -35,62 +35,65 @@ export const PageBodyFullViewportImage = ({
   const buttonTextColorP3 = safeHexToP3(buttonTextColor)
 
   return (
-    <BoundedBox
-      position="relative"
-      height="100vh"
-      pt="20vh"
-      pb="20vh"
-      {...props}
-    >
-      <ImageContainer
-        position="absolute"
-        top={0}
-        left={0}
-        right={0}
-        bottom={0}
-        css={{ pointerEvents: 'none', userSelect: 'none' }}
+    <Text fontFamily={fontFamily} color={textColorP3}>
+      <BoundedBox
+        position="relative"
+        height="100vh"
+        pt="20vh"
+        pb="20vh"
+        {...props}
       >
-        <Image
-          fluid={imageFluid}
-          src={imageURL}
-          alt={imageAlt}
-          {...props}
-          css={{ userSelect: 'none', pointerEvents: 'none' }}
-        />
-      </ImageContainer>
-      <Flex height="100%" justifyContent="center">
-        <Flex
-          position="relative"
-          flexDirection="column"
-          alignSelf={normalizedTextVerticalAlignment}
-          maxWidth="m"
+        <ImageContainer
+          position="absolute"
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+          css={{ pointerEvents: 'none', userSelect: 'none' }}
         >
-          <HTMLContent
-            html={textHTML}
-            color={textColorP3}
-            fontFamily={fontFamily}
-            fontSizeScale="m"
-            mbScale="m-"
-            textAlign="center"
-            fontWeight="bold"
+          <Image
+            fluid={imageFluid}
+            src={imageURL}
+            alt={imageAlt}
+            objectFit="contain"
+            css={{ userSelect: 'none', pointerEvents: 'none' }}
           />
-          <Flex as="ul" flexWrap="wrap" justifyContent="center">
-            {buttons.map(button => (
-              <Box key={button?.href} as="li" mrScale="s">
-                <Button
-                  as={Link}
-                  href={button?.href}
-                  bg={buttonColorP3}
-                  color={buttonTextColorP3}
-                >
-                  {button?.text}
-                </Button>
-              </Box>
-            ))}
+        </ImageContainer>
+        <Flex height="100%" justifyContent="center">
+          <Flex
+            position="relative"
+            flexDirection="column"
+            alignSelf={normalizedTextVerticalAlignment}
+            maxWidth="m"
+          >
+            <HTMLContent
+              html={textHTML}
+              color={textColorP3}
+              fontSizeScale="m"
+              mbScale="m-"
+              mxScale="l"
+              textAlign="center"
+              fontWeight="bold"
+              lineHeight="title"
+            />
+            <Flex as="ul" flexWrap="wrap" justifyContent="center">
+              {buttons.map(button => (
+                <Box key={button?.href} as="li" mrScale="s">
+                  <Button
+                    as={Link}
+                    href={button?.href}
+                    bg={buttonColorP3}
+                    color={buttonTextColorP3}
+                  >
+                    {button?.text}
+                  </Button>
+                </Box>
+              ))}
+            </Flex>
           </Flex>
         </Flex>
-      </Flex>
-    </BoundedBox>
+      </BoundedBox>
+    </Text>
   )
 }
 

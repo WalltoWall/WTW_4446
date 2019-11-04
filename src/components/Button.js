@@ -6,9 +6,10 @@ export const Button = props => (
   <ButtonBase
     pxScale="s"
     pyScale="s-"
+    fontSizeScale="m"
     lineHeight="solid"
-    fontWeight="bold"
-    textStyle="trackedCaps"
+    fontWeight="heavy"
+    textStyle="caps"
     {...props}
   />
 )
