@@ -1,11 +1,10 @@
 const { linearScale } = require('styled-system-scale')
-const { hexToP3 } = require('@walltowall/hex-to-p3')
 
 const sizes = {
   s: '48rem',
   m: '60rem',
-  l: '80rem',
-  xl: '100rem',
+  l: '100rem',
+  xl: '130rem',
 }
 const breakpoints = Object.values(sizes)
 
@@ -23,7 +22,6 @@ const theme = {
    * Colors
    */
   colors: {
-    blue: hexToP3('#00f'),
     white: '#fff',
     black: '#000',
   },
@@ -32,13 +30,16 @@ const theme = {
    * Fonts
    */
   fonts: {
-    sans: 'Inter, sans-serif',
+    sans: 'sans-serif',
     serif: 'serif',
   },
   fontSizeScales: {
-    b: linearScale('14px', '24px', { count }),
-    m: linearScale('20px', '28px', { count }),
-    l: linearScale('30px', '56px', { count }),
+    s: linearScale('15px', '24px', { count }),
+    b: linearScale('17px', '32px', { count }),
+    m: linearScale('21px', '48px', { count }),
+    l: linearScale('26px', '60px', { count }),
+    xl: linearScale('31px', '80px', { count }),
+    xxl: linearScale('36px', '100px', { count }),
   },
   fontWeights: {
     thin: 200,
@@ -62,12 +63,13 @@ const theme = {
    */
   spaceScales: {
     0: linearScale(0, 0, { count }),
-    's-': linearScale('8px', '20px', { count }),
-    s: linearScale('10px', '30px', { count }),
-    'm-': linearScale('20px', '50px', { count }),
-    m: linearScale('20px', '60px', { count }),
-    l: linearScale('30px', '70px', { count }),
-    xl: linearScale('55px', '150px', { count }),
+    't-': linearScale('5px', '15px', { count }),
+    t: linearScale('10px', '27px', { count }),
+    s: linearScale('12px', '34px', { count }),
+    m: linearScale('20px', '45px', { count }),
+    l: linearScale('30px', '57px', { count }),
+    xl: linearScale('40px', '120px', { count }),
+    xxl: linearScale('50px', '150px', { count }),
   },
 
   /***
@@ -82,11 +84,7 @@ const theme = {
   /***
    * Z Indices
    */
-  zIndices: {
-    header: 2,
-    desktopNav: 2,
-    navOverlay: 1,
-  },
+  zIndices: {},
 
   /***
    * Variants

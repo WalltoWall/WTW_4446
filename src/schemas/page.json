@@ -32,20 +32,109 @@
         "customtypes": ["page"],
         "label": "Parent"
       }
-    },
-    "webfonts": {
+    }
+  },
+  "Fonts": {
+    "webfont_css": {
       "type": "Group",
       "config": {
         "fields": {
-          "css_url": {
+          "url": {
             "type": "Text",
             "config": {
-              "label": "CSS URL",
-              "placeholder": "CSS file containing @font-face declarations"
+              "label": "URL"
             }
           }
         },
-        "label": "Webfonts"
+        "label": "Webfont CSS"
+      }
+    },
+    "headline_font_family": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Headline Font Family",
+        "placeholder": "Name of the font family in the CSS file"
+      }
+    },
+    "headline_font_weight": {
+      "type": "Select",
+      "config": {
+        "options": ["200", "300", "400", "500", "600", "700", "800", "900"],
+        "label": "Headline Font Weight"
+      }
+    },
+    "headline_line_height": {
+      "type": "Number",
+      "config": {
+        "label": "Headline Line Height",
+        "placeholder": "CSS line-height value"
+      }
+    },
+    "subheadline_font_family": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Subheadline Font Family",
+        "placeholder": "Name of the font family in the CSS file"
+      }
+    },
+    "subheadline_font_weight": {
+      "type": "Select",
+      "config": {
+        "options": ["200", "300", "400", "500", "600", "700", "800", "900"],
+        "label": "Subheadline Font Weight"
+      }
+    },
+    "subheadline_line_height": {
+      "type": "Number",
+      "config": {
+        "label": "Subheadline Line Height",
+        "placeholder": "CSS line-height value"
+      }
+    },
+    "body_font_family": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Body Font Family",
+        "placeholder": "Name of the font family in the CSS file"
+      }
+    },
+    "body_font_weight": {
+      "type": "Select",
+      "config": {
+        "options": ["200", "300", "400", "500", "600", "700", "800", "900"],
+        "label": "Body Font Weight"
+      }
+    },
+    "body_line_height": {
+      "type": "Number",
+      "config": {
+        "label": "Body Line Height",
+        "placeholder": "CSS line-height value"
+      }
+    },
+    "button_font_family": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Button Font Family",
+        "placeholder": "Name of the font family in the CSS file"
+      }
+    },
+    "button_font_weight": {
+      "type": "Select",
+      "config": {
+        "options": ["200", "300", "400", "500", "600", "700", "800", "900"],
+        "label": "Button Font Weight"
+      }
+    },
+    "button_line_height": {
+      "type": "Number",
+      "config": {
+        "label": "Button Line Height",
+        "placeholder": "CSS line-height value"
       }
     }
   },
@@ -60,7 +149,9 @@
           "header": [],
           "footer": [],
           "text": [],
-          "judges": []
+          "judges": [],
+          "entry_details": [],
+          "event_details": []
         },
         "choices": {
           "text": {
@@ -76,10 +167,10 @@
                   "label": "Background Color"
                 }
               },
-              "heading_color": {
+              "headline_color": {
                 "type": "Color",
                 "config": {
-                  "label": "Heading Color"
+                  "label": "Headline Color"
                 }
               },
               "text_color": {
@@ -94,32 +185,10 @@
                   "label": "Link Color"
                 }
               },
-              "font_family": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "paragraph",
-                  "label": "Font Family"
-                }
-              },
-              "heading_image": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "Heading Image"
-                }
-              },
-              "heading": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading1",
-                  "label": "Heading"
-                }
-              },
               "text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, heading1, strong, em, hyperlink, list-item, o-list-item, o-list-item",
+                  "multi": "paragraph, heading1, strong, em, hyperlink, list-item, o-list-item",
                   "allowTargetBlank": true,
                   "label": "Text"
                 }
@@ -134,6 +203,14 @@
             "icon": "image",
             "display": "list",
             "non-repeat": {
+              "variant": {
+                "type": "Select",
+                "config": {
+                  "options": ["Auto height", "Full viewport height"],
+                  "default_value": "Auto height",
+                  "label": "Variant"
+                }
+              },
               "image": {
                 "type": "Image",
                 "config": {
@@ -155,91 +232,6 @@
               }
             },
             "repeat": {}
-          },
-          "full_viewport_image": {
-            "type": "Slice",
-            "fieldset": "Full Viewport Image",
-            "description": "Image sized to the full width and height of the window",
-            "icon": "panorama",
-            "display": "list",
-            "non-repeat": {
-              "text_color": {
-                "type": "Color",
-                "config": {
-                  "label": "Text Color"
-                }
-              },
-              "button_color": {
-                "type": "Color",
-                "config": {
-                  "label": "Button Color"
-                }
-              },
-              "button_text_color": {
-                "type": "Color",
-                "config": {
-                  "label": "Button Text Color"
-                }
-              },
-              "font_family": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "paragraph",
-                  "label": "Font Family"
-                }
-              },
-              "text": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, strong, em, hyperlink",
-                  "allowTargetBlank": true,
-                  "label": "Text"
-                }
-              },
-              "text_vertical_alignment": {
-                "type": "Select",
-                "config": {
-                  "options": ["Center", "Top", "Bottom"],
-                  "default_value": "Center",
-                  "label": "Text Vertical Alignment"
-                }
-              },
-              "image": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [
-                    {
-                      "name": "Tablet",
-                      "width": 768,
-                      "height": null
-                    },
-                    {
-                      "name": "Mobile",
-                      "width": 375,
-                      "height": null
-                    }
-                  ],
-                  "label": "Image"
-                }
-              }
-            },
-            "repeat": {
-              "button_text": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "paragraph",
-                  "label": "Button Text"
-                }
-              },
-              "button_link": {
-                "type": "Link",
-                "config": {
-                  "allowTargetBlank": true,
-                  "label": "Button Link"
-                }
-              }
-            }
           },
           "header": {
             "type": "Slice",
@@ -258,13 +250,6 @@
                 "type": "Color",
                 "config": {
                   "label": "Link Color"
-                }
-              },
-              "font_family": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "paragraph",
-                  "label": "Font Family"
                 }
               },
               "logo": {
@@ -311,11 +296,11 @@
                   "label": "Text Color"
                 }
               },
-              "font_family": {
+              "copyright": {
                 "type": "StructuredText",
                 "config": {
                   "single": "paragraph",
-                  "label": "Font Family"
+                  "label": "Copyright"
                 }
               }
             },
@@ -334,32 +319,41 @@
                   "label": "Background Color"
                 }
               },
+              "headline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Headline Color"
+                }
+              },
               "text_color": {
                 "type": "Color",
                 "config": {
                   "label": "Text Color"
                 }
               },
-              "font_family": {
-                "type": "StructuredText",
+              "link_color": {
+                "type": "Color",
                 "config": {
-                  "single": "paragraph",
-                  "label": "Font Family"
+                  "label": "Link Color"
                 }
               },
-              "heading_image": {
-                "type": "Image",
+              "button_background_color": {
+                "type": "Color",
                 "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "Heading Image"
+                  "label": "Button Background Color"
                 }
               },
-              "heading": {
+              "button_text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Text Color"
+                }
+              },
+              "headline": {
                 "type": "StructuredText",
                 "config": {
                   "single": "heading1",
-                  "label": "Heading"
+                  "label": "Headline"
                 }
               }
             },
@@ -391,12 +385,228 @@
                   "label": "Image Side"
                 }
               },
+              "name": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Name",
+                  "placeholder": "Judge's name"
+                }
+              },
+              "job_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Job Title",
+                  "placeholder": "Judge's job title"
+                }
+              },
+              "location": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Location",
+                  "placeholder": "Judge's location in City, State format"
+                }
+              },
+              "bio": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Bio",
+                  "placeholder": "280 characters or less about the judge"
+                }
+              }
+            }
+          },
+          "entry_details": {
+            "type": "Slice",
+            "fieldset": "Entry Details",
+            "description": "Info and dates for entering.",
+            "icon": "move_to_inbox",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "headline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Headline Color"
+                }
+              },
+              "subheadline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Subheadline Color"
+                }
+              },
+              "text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Text Color"
+                }
+              },
+              "link_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Link Color"
+                }
+              },
+              "button_background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Background Color"
+                }
+              },
+              "button_text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Text Color"
+                }
+              },
               "text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, heading1, heading2, strong, em, hyperlink, list-item, o-list-item",
+                  "multi": "paragraph, heading1, strong, em, hyperlink, list-item, o-list-item",
                   "allowTargetBlank": true,
                   "label": "Text"
+                }
+              },
+              "entry_booklet_button_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Entry Booklet Button Link",
+                  "placeholder": "Link to the entry booklet"
+                }
+              },
+              "entry_booklet_button_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Entry Booklet Button Text"
+                }
+              },
+              "online_entry_button_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Online Entry Button Link",
+                  "placeholder": "Link to the online entry system"
+                }
+              },
+              "online_entry_button_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Online Entry Button Text"
+                }
+              }
+            },
+            "repeat": {
+              "deadline_name": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Deadline Name",
+                  "placeholder": "Name of the deadline"
+                }
+              },
+              "deadline_date": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Deadline Date",
+                  "placeholder": "Date of the deadline"
+                }
+              }
+            }
+          },
+          "event_details": {
+            "type": "Slice",
+            "fieldset": "Event Details",
+            "description": "Info and dates for the event.",
+            "icon": "event_note",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "headline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Headline Color"
+                }
+              },
+              "subheadline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Subheadline Color"
+                }
+              },
+              "text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Text Color"
+                }
+              },
+              "link_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Link Color"
+                }
+              },
+              "button_background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Background Color"
+                }
+              },
+              "button_text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Text Color"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading1, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Text"
+                }
+              },
+              "buy_tickets_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Buy Tickets Link",
+                  "placeholder": "Link to purchase tickets"
+                }
+              }
+            },
+            "repeat": {
+              "detail_name": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Detail Name",
+                  "placeholder": "Name of the detail"
+                }
+              },
+              "detail_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading3, strong, em, hyperlink, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Detail Text",
+                  "placeholder": "Text for the detail"
                 }
               }
             }

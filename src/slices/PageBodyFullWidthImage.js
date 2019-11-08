@@ -1,25 +1,38 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { getImageFluid } from 'helpers'
+import { camelCase } from 'tiny-compose-fns'
+import { notEmpty, getImageFluid } from 'helpers'
 
-import { Image } from 'system'
+import { Box, Image } from 'system'
+
+const variants = {
+  autoHeight: { imageHeight: 'auto' },
+  fullViewportHeight: { imageHeight: '100vh' },
+}
 
 export const PageBodyFullWidthImage = ({
+  variant: variantName = 'autoHeight',
   imageFluid,
   imageURL,
   imageAlt,
   ...props
-}) => (
-  <Image
-    fluid={imageFluid}
-    src={imageURL}
-    alt={imageAlt}
-    height="auto"
-    {...props}
-  />
-)
+}) => {
+  const variant = variants[variantName]
+
+  return (
+    <Box as="section" {...props}>
+      <Image
+        fluid={imageFluid}
+        src={imageURL}
+        alt={imageAlt}
+        height={variant.imageHeight}
+      />
+    </Box>
+  )
+}
 
 PageBodyFullWidthImage.mapDataToProps = ({ data }) => ({
+  variant: notEmpty(camelCase(data?.primary?.variant)),
   imageFluid: getImageFluid(data?.primary?.image),
   imageURL: data?.primary?.image?.url,
   imageAlt: data?.primary?.image?.alt,
@@ -33,6 +46,7 @@ export const fragment = graphql`
           ... on PrismicPageBodyFullWidthImage {
             id
             primary {
+              variant
               image {
                 alt
                 localFile {
