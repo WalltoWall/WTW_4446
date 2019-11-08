@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
 import { linearScale } from 'styled-system-scale'
-import { hexToP3 } from '@walltowall/hex-to-p3'
 
-import { useSettingsData } from 'src/hooks'
+import { safeHexToP3 } from 'src/helpers'
 
-import { Flex, Link, SVG, Text } from 'system'
+import { ThemeProvider, Grid, Link, SVG, Text } from 'system'
 import { BoundedBox } from 'src/components'
-import { ReactComponent as AssetLogoAAFHawaiiSVG } from 'src/assets/logo-aaf-hawaii.svg'
+import { ReactComponent as AssetLogoAAFDistrict13SVG } from 'src/assets/logo-aaf-district-13.svg'
 import { ReactComponent as AssetIconFacebookSVG } from 'src/assets/icon-facebook.svg'
 import { ReactComponent as AssetIconInstagramSVG } from 'src/assets/icon-instagram.svg'
 
@@ -15,65 +14,73 @@ export const PageBodyFooter = ({
   backgroundColor,
   linkColor = 'inherit',
   textColor = 'inherit',
-  fontFamily = 'inherit',
+  copyright,
   ...props
 }) => {
-  const settings = useSettingsData()
   const isTransparent = !Boolean(backgroundColor)
 
-  const backgroundColorP3 = hexToP3(backgroundColor)
-  const linkColorP3 = hexToP3(linkColor)
-  const textColorP3 = hexToP3(textColor)
+  const theme = useMemo(
+    () => ({
+      colors: {
+        background: safeHexToP3(backgroundColor),
+        body: safeHexToP3(textColor),
+        link: safeHexToP3(linkColor),
+      },
+    }),
+    [backgroundColor, linkColor, textColor],
+  )
 
   return (
-    <BoundedBox
-      pyScale="m-"
-      as="footer"
-      bg={backgroundColorP3}
-      color={textColorP3}
-      position={isTransparent ? 'absolute' : 'static'}
-      top={0}
-      right={0}
-      left={0}
-      zIndex="header"
-      maxWidth="none"
-      {...props}
-    >
-      <Flex alignItems="center" justifyContent="space-between">
-        <Link href="" mrScale="l">
-          <SVG
-            x={136.1}
-            y={85.04}
-            svg={AssetLogoAAFHawaiiSVG}
-            width={linearScale('50px', '120px', { count: 5 })}
-            color={textColor}
-          />
-        </Link>
-        <Flex alignItems="center">
-          <Link href="" color={linkColorP3} mrScale="s">
+    <ThemeProvider theme={theme}>
+      <BoundedBox
+        pyScale="m"
+        as="footer"
+        bg="background"
+        color="body"
+        position={isTransparent ? 'absolute' : 'static'}
+        top={0}
+        right={0}
+        left={0}
+        zIndex="header"
+        maxWidth="none"
+        {...props}
+      >
+        <Grid
+          gridGapScale="m"
+          gridTemplateColumns="auto 1fr auto auto"
+          alignItems="center"
+        >
+          <Link href="" color="link">
+            <SVG
+              x={74}
+              y={69}
+              svg={AssetLogoAAFDistrict13SVG}
+              width={linearScale('32px', '74px', { count: 5 })}
+            />
+          </Link>
+          <Text as="p" fontSizeScale="s" lineHeight="1.2">
+            {copyright ||
+              `© ${new Date().getFullYear()} Pele Awards. All rights reserved.`}
+          </Text>
+          <Link href="" color="link">
             <SVG
               x={31}
               y={57}
               svg={AssetIconFacebookSVG}
-              width={linearScale('12px', '30px', { count: 5 })}
-              color={textColor}
+              width={linearScale('16px', '30px', { count: 5 })}
             />
           </Link>
-          <Link href="" color={linkColorP3} mrScale="m">
+          <Link href="" color="link">
             <SVG
               x={1}
               y={1}
               svg={AssetIconInstagramSVG}
-              width={linearScale('23px', '60px', { count: 5 })}
-              color={textColor}
+              width={linearScale('31px', '60px', { count: 5 })}
             />
           </Link>
-          <Text as="p" fontFamily={fontFamily} textAlign="right">
-            {settings?.site_copyright?.text}
-          </Text>
-        </Flex>
-      </Flex>
-    </BoundedBox>
+        </Grid>
+      </BoundedBox>
+    </ThemeProvider>
   )
 }
 
@@ -81,7 +88,7 @@ PageBodyFooter.mapDataToProps = ({ data }) => ({
   backgroundColor: data?.primary?.background_color,
   linkColor: data?.primary?.link_color,
   textColor: data?.primary?.text_color,
-  fontFamily: data?.primary?.font_family?.text,
+  copyright: data?.primary?.copyright?.text,
 })
 
 export const fragment = graphql`
@@ -95,7 +102,7 @@ export const fragment = graphql`
               background_color
               link_color
               text_color
-              font_family {
+              copyright {
                 text
               }
             }

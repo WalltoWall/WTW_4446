@@ -4,9 +4,12 @@ import { Heading as HeadingBase } from 'system'
 
 export const Heading = props => (
   <HeadingBase
-    fontWeight="black"
-    fontSizeScale="l"
-    lineHeight="title"
+    as="h2"
+    color="headline"
+    fontFamily="headline"
+    fontWeight="headline"
+    lineHeight="headline"
+    fontSizeScale="xxl"
     {...props}
   />
 )

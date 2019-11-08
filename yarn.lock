@@ -2245,10 +2245,10 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@walltowall/gatsby-theme-ww-base@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@walltowall/gatsby-theme-ww-base/-/gatsby-theme-ww-base-2.0.3.tgz#0f29634b13e4858335078fc748216d8b395f408e"
-  integrity sha512-T4M1Uu2ihOxzz/uw4Hnh/EXfuNXJz8npTwuDl3Q+wCdKBS7PQ2b0uc6QyfX6kH7wmzi4hRV8kzzXzdcvpoAftw==
+"@walltowall/gatsby-theme-ww-base@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@walltowall/gatsby-theme-ww-base/-/gatsby-theme-ww-base-2.3.0.tgz#431bff286031c87985e87634f68d7e60b041e502"
+  integrity sha512-NDXU148Op01vTmaPazOrqPQcG9bACAHurVqhhnUbstfOVKC1BnVQdlarUhXWglNnFRX+HXD0pt8TxIbDmVsQxw==
   dependencies:
     "@svgr/webpack" "^4.3.2"
     babel-plugin-styled-components "^1.10.6"
@@ -2261,6 +2261,7 @@
     gatsby-plugin-polyfill-io "^1.1.0"
     gatsby-plugin-react-axe "^0.2.2"
     gatsby-plugin-react-helmet "^3.1.4"
+    gatsby-plugin-remove-fingerprints "^0.0.2"
     gatsby-plugin-root-import "^2.0.5"
     gatsby-plugin-sharp "^2.2.13"
     gatsby-plugin-sitemap "^2.2.7"
@@ -2273,13 +2274,14 @@
     minireset.css "^0.0.5"
     object-fit-images "^3.2.4"
 
-"@walltowall/gatsby-theme-ww-prismic@^0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@walltowall/gatsby-theme-ww-prismic/-/gatsby-theme-ww-prismic-0.19.0.tgz#59c8b1959918fb01d4af327d7f25ee0af4cd0204"
-  integrity sha512-H4plJlbtdQOhZmQQMMjahvRgx08FhkaNIFMyRwtG5bK1jFgJEsnsWLW5CLxIlJ3JUs/kikORUW+myzaNMx1v+g==
+"@walltowall/gatsby-theme-ww-prismic@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@walltowall/gatsby-theme-ww-prismic/-/gatsby-theme-ww-prismic-0.22.0.tgz#97c7974cc54043e41db6da31892b477afbbbd392"
+  integrity sha512-E06JFGDbhLvthVDLz+RSucDfGJgTPc2rdRw/bkHySiz34TgvwFPda0HAy1oMlrla4Ea3OYmbg3uaTllgnztfAQ==
   dependencies:
     "@reach/skip-nav" "^0.1.3"
     "@walltowall/helpers" "^3.2.1"
+    "@walltowall/hooks" "^0.7.1"
     "@walltowall/react-map-slices-to-components" "^0.2.3"
     gatsby-plugin-compile-es6-packages "^1.1.0"
     gatsby-plugin-create-client-paths "^2.1.1"
@@ -2317,7 +2319,7 @@
   resolved "https://registry.yarnpkg.com/@walltowall/hex-to-p3/-/hex-to-p3-0.2.0.tgz#b58ad0d69a79167778e6934fd6395cccefcc1224"
   integrity sha512-MalqxxpGQqK0YWZ3fMpqY0+mkWxSFqEQAf5+E8Wyfw2oyDjpqIMWwf+y6t5OPMI/hMQwLWpkTQZEjADgupis7Q==
 
-"@walltowall/hooks@^0.7.3":
+"@walltowall/hooks@^0.7.1", "@walltowall/hooks@^0.7.3":
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/@walltowall/hooks/-/hooks-0.7.3.tgz#efb50df0d1ac78fd12fefe34ebd0ac36d2c5ec65"
   integrity sha512-o0uEL2qIoI40HLxWTH3Jvm6D0Vbx3zDYk02ouTwKwdH1hatIlrfdP+f9TZwEf5znu7zqu29EB/Byhzmglgw1vQ==
@@ -6811,6 +6813,11 @@ gatsby-plugin-react-helmet@^3.1.4:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
+gatsby-plugin-remove-fingerprints@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-remove-fingerprints/-/gatsby-plugin-remove-fingerprints-0.0.2.tgz#ef21a184e2f5deffe644aebd16b8d67f46a7d51b"
+  integrity sha512-af1zbr0+cr3fcjEAVAbUia/On6GJbrxoLVNZf7TxLqKzPMfMlDNXf6hDXAJy0dzxE6qrqD2oyGZpk1rOdgUQ0Q==
+
 gatsby-plugin-root-import@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-root-import/-/gatsby-plugin-root-import-2.0.5.tgz#04e520dc661d67f49aa7950f11b7c780fd2fdbd3"
@@ -9636,6 +9643,11 @@ minireset.css@^0.0.5:
   resolved "https://registry.yarnpkg.com/minireset.css/-/minireset.css-0.0.5.tgz#90ac7315fe2513855fd9e30af524e00a1ee76a16"
   integrity sha512-q3Z1aXZaZyrXeHqg8+LeKvrmCVC3D295RLhYeLNFP9MUKndNAmQXRJXAbu4JhhDdErZPTLDxDt4kTVpWBRaB6A==
 
+minireset.css@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/minireset.css/-/minireset.css-0.0.6.tgz#da387bf21b443e4906ea75c79daef20ab45c2b00"
+  integrity sha512-aluj16Tc1KhEYGDa/tedYzIbZ2Ax/JR25MUQzGkqOrcw/P5OPSlwNNrlLpdULu0xFNnxu2SRHx4rKiIMq3iSTQ==
+
 minizlib@^1.1.1, minizlib@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-1.2.1.tgz#dd27ea6136243c7c880684e8672bb3a45fd9b614"
@@ -11671,15 +11683,15 @@ react-dev-utils@^4.2.3:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-dom@^16.9.0:
-  version "16.9.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.9.0.tgz#5e65527a5e26f22ae3701131bcccaee9fb0d3962"
-  integrity sha512-YFT2rxO9hM70ewk9jq0y6sQk8cL02xm4+IzYBz75CQGlClQQ1Bxq0nhHF6OtSbit+AIahujJgb/CPRibFkMNJQ==
+react-dom@^16.11.0:
+  version "16.11.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.11.0.tgz#7e7c4a5a85a569d565c2462f5d345da2dd849af5"
+  integrity sha512-nrRyIUE1e7j8PaXSPtyRKtz+2y9ubW/ghNgqKFHHAHaeP0fpF5uXR+sq8IMRHC+ZUxw7W9NyCDTBtwWxvkb0iA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.15.0"
+    scheduler "^0.17.0"
 
 react-error-overlay@^3.0.0:
   version "3.0.0"
@@ -11787,6 +11799,20 @@ react-test-renderer@^16.9.0:
     prop-types "^15.6.2"
     react-is "^16.9.0"
     scheduler "^0.15.0"
+
+react-use-gesture@^6.0.14:
+  version "6.0.14"
+  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-6.0.14.tgz#ab2d35ef72a5fb6060a6160eb12568c276f8a4b1"
+  integrity sha512-d9cnZJ0DOFd3FIO76J776DyhtbODgbxGKu19lvc1aSNTnRV5EKr9V4Uda188l2Qh0Va3pqWGxEQlw72r2cmnFQ==
+
+react@^16.11.0:
+  version "16.11.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.11.0.tgz#d294545fe62299ccee83363599bf904e4a07fdbb"
+  integrity sha512-M5Y8yITaLmU0ynd0r1Yvfq98Rmll6q8AxaEe88c8e7LxO8fZ2cNgmFt0aGAS9wzf1Ao32NKXtCl+/tVVtkxq6g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 react@^16.9.0:
   version "16.9.0"
@@ -12386,6 +12412,14 @@ scheduler@^0.15.0:
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.15.0.tgz#6bfcf80ff850b280fed4aeecc6513bc0b4f17f8e"
   integrity sha512-xAefmSfN6jqAa7Kuq7LIJY0bwAPG3xlCj0HMEBQk1lxYiDKZscY2xJ5U/61ZTrYbmNQbXa+gc7czPkVo11tnCg==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.17.0.tgz#7c9c673e4ec781fac853927916d1c426b6f3ddfe"
+  integrity sha512-7rro8Io3tnCPuY4la/NuI5F2yfESpnfZyT6TtkXnSWVkcu0BCDJ+8gk5ozUaFaxpIyNuWAPXrH0yFcSi28fnDA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

@@ -1,8 +1,9 @@
 import { graphql } from 'gatsby'
 
 // 1. Import your slice
+import { PageBodyEntryDetails } from './PageBodyEntryDetails'
+import { PageBodyEventDetails } from './PageBodyEventDetails'
 import { PageBodyFooter } from './PageBodyFooter'
-import { PageBodyFullViewportImage } from './PageBodyFullViewportImage'
 import { PageBodyFullWidthImage } from './PageBodyFullWidthImage'
 import { PageBodyHeader } from './PageBodyHeader'
 import { PageBodyJudges } from './PageBodyJudges'
@@ -10,8 +11,9 @@ import { PageBodyText } from './PageBodyText'
 
 // 2. Add your slice
 export const slicesMap = {
+  PageBodyEntryDetails,
+  PageBodyEventDetails,
   PageBodyFooter,
-  PageBodyFullViewportImage,
   PageBodyFullWidthImage,
   PageBodyHeader,
   PageBodyJudges,
@@ -21,8 +23,9 @@ export const slicesMap = {
 // 3. Add your slice fragment
 export const fragment = graphql`
   fragment SlicesPageBody on Query {
+    ...PageBodyEntryDetails
+    ...PageBodyEventDetails
     ...PageBodyFooter
-    ...PageBodyFullViewportImage
     ...PageBodyFullWidthImage
     ...PageBodyHeader
     ...PageBodyJudges

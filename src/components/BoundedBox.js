@@ -4,10 +4,9 @@ import { BoundedBox as BoundedBoxBase } from 'system'
 
 export const BoundedBox = ({ nextSharesBg = [false], ...props }) => (
   <BoundedBoxBase
-    pxScale="m"
-    ptScale="xl"
-    pbScale={nextSharesBg?.map?.(cond => (cond ? 0 : 'xl'))}
-    maxWidth="l"
+    pxScale={['l', null, 'xl', null, 'xxl']}
+    ptScale="xxl"
+    pbScale={nextSharesBg?.map?.(cond => (cond ? 0 : 'xxl'))}
     {...props}
   />
 )
