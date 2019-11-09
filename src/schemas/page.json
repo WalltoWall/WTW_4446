@@ -138,6 +138,52 @@
       }
     }
   },
+  "Navigation": {
+    "primary_links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "name": {
+            "type": "StructuredText",
+            "config": {
+              "single": "paragraph",
+              "label": "Name"
+            }
+          },
+          "link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "Link"
+            }
+          }
+        },
+        "label": "Primary Links"
+      }
+    },
+    "secondary_links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "name": {
+            "type": "StructuredText",
+            "config": {
+              "single": "paragraph",
+              "label": "Name"
+            }
+          },
+          "link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "Link"
+            }
+          }
+        },
+        "label": "Secondary Links"
+      }
+    }
+  },
   "Body": {
     "body": {
       "type": "Slices",

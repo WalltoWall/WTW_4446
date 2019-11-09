@@ -1,37 +1,12 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
-import { linearScale } from 'styled-system-scale'
 import { camelCase } from 'tiny-compose-fns'
 import { notEmpty, getImageFluid, getRichText } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
-import {
-  ThemeProvider,
-  Box,
-  Flex,
-  Grid,
-  Text,
-  ImageContainer,
-  Image,
-  AspectRatio,
-  SVG,
-} from 'system'
-import {
-  BoundedBox,
-  StandardGrid,
-  Heading,
-  Subheading,
-  HTMLContent,
-  ButtonCircle,
-} from 'src/components'
-import { ReactComponent as AssetIconPlusSVG } from 'src/assets/icon-plus.svg'
-import { ReactComponent as AssetIconMinusSVG } from 'src/assets/icon-minus.svg'
-
-const toggleButtonSVGs = {
-  plus: { svg: AssetIconPlusSVG, x: 1, y: 1 },
-  minus: { svg: AssetIconMinusSVG, x: 20, y: 8 },
-}
+import { ThemeProvider, Grid } from 'system'
+import { BoundedBox, StandardGrid, Heading, Judge } from 'src/components'
 
 export const PageBodyJudges = ({
   backgroundColor = 'white',
@@ -68,19 +43,16 @@ export const PageBodyJudges = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <BoundedBox as="section" bg="background" {...props}>
-        <StandardGrid gridGapScale="xl">
+      <BoundedBox as="section" id="judges" bg="background" {...props}>
+        <StandardGrid gridRowGapScale="xl">
           {headline && (
             <Heading gridColumn="1 / -1" textAlign="center" color="body">
               {headline}
             </Heading>
           )}
           <Grid
-            gridColumn="1 / -1"
-            maxWidth="l"
-            mx="auto"
+            gridColumn={['1 / -1', null, null, '2 / span 10']}
             gridGapScale="xl"
-            width={1}
           >
             {children}
           </Grid>
@@ -90,83 +62,7 @@ export const PageBodyJudges = ({
   )
 }
 
-PageBodyJudges.Judge = ({
-  imageSide = 'left',
-  name,
-  jobTitle,
-  location,
-  bioHTML,
-  imageFluid,
-  imageURL,
-  imageAlt,
-  ...props
-}) => {
-  const [bioIsOpen, setBioIsOpen] = useState(false)
-  const toggleBioIsOpen = () => setBioIsOpen(state => !state)
-
-  const imageIsOnLeft = imageSide === 'left'
-  const svg = toggleButtonSVGs[bioIsOpen ? 'minus' : 'plus']
-
-  return (
-    <Grid
-      gridAutoFlow="dense"
-      gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
-      gridRowGapScale="m"
-      gridColumnGapScale="xxl"
-      alignItems="center"
-    >
-      <ImageContainer gridColumn={[null, imageIsOnLeft ? 1 : 2]}>
-        <AspectRatio x={6} y={7}>
-          <Image fluid={imageFluid} src={imageURL} alt={imageAlt} />
-        </AspectRatio>
-      </ImageContainer>
-      <Box gridColumn={[null, imageIsOnLeft ? 2 : 1]}>
-        {name && (
-          <Heading fontSizeScale="xl" mbScale="t-">
-            {name}
-          </Heading>
-        )}
-        {jobTitle && (
-          <Text as="p" mbScale="t-">
-            {jobTitle}
-          </Text>
-        )}
-        {location && (
-          <Subheading as="p" color="body" mbScale="t-">
-            {location}
-          </Subheading>
-        )}
-        {bioHTML && (
-          <Box mtScale="s">
-            <Flex alignItems="center">
-              <ButtonCircle
-                height={linearScale('30px', '70px', { count: 5 })}
-                width={linearScale('30px', '70px', { count: 5 })}
-                mrScale="t"
-                onClick={toggleBioIsOpen}
-              >
-                <SVG
-                  svg={svg.svg}
-                  x={svg.x}
-                  y={svg.y}
-                  width={linearScale('12px', '30px', { count: 5 })}
-                />
-              </ButtonCircle>
-              <Subheading as="span" fontSizeScale="m" textStyle="caps">
-                Bio
-              </Subheading>
-            </Flex>
-            <HTMLContent
-              mtScale="t"
-              html={bioHTML}
-              display={bioIsOpen ? 'block' : 'none'}
-            />
-          </Box>
-        )}
-      </Box>
-    </Grid>
-  )
-}
+PageBodyJudges.Judge = Judge
 
 PageBodyJudges.mapDataToProps = ({ data }) => ({
   backgroundColor: data?.primary?.background_color,

@@ -1,13 +1,31 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { graphql } from 'gatsby'
 import { linearScale } from 'styled-system-scale'
 import { getImageFluid } from 'helpers'
 
-import { useNavigationData } from 'src/hooks'
 import { safeHexToP3 } from 'src/helpers'
 
-import { ThemeProvider, Box, Grid, Flex, Image, Link } from 'system'
-import { BoundedBox } from 'src/components'
+import { ThemeProvider, Box, Flex, Grid, Image, Link } from 'system'
+import {
+  BoundedBox,
+  HamburgerButton,
+  MobileNav,
+  Subheading,
+} from 'src/components'
+
+const NavItems = props => (
+  <Grid as="ul" gridAutoFlow="column" gridGapScale="s" {...props} />
+)
+
+const NavItem = ({ children, href, target, ...props }) => (
+  <Box as="li" {...props}>
+    <Subheading as="span" textAlign="center" fontSizeScale="b">
+      <Link href={href} target={target}>
+        {children}
+      </Link>
+    </Subheading>
+  </Box>
+)
 
 export const PageBodyHeader = ({
   backgroundColor,
@@ -15,15 +33,20 @@ export const PageBodyHeader = ({
   logoImageFluid,
   logoImageURL,
   logoImageAlt,
+  primaryLinks = [],
+  secondaryLinks = [],
   ...props
 }) => {
+  const [navIsOpen, setNavIsOpen] = useState(false)
+  const closeNav = () => setNavIsOpen(false)
+  const toggleNav = () => setNavIsOpen(state => !state)
   const isTransparent = !Boolean(backgroundColor)
-  // const navigation = useNavigationData(navigationUID)
 
   const theme = useMemo(
     () => ({
       colors: {
         background: safeHexToP3(backgroundColor),
+        subheadline: safeHexToP3(linkColor),
         link: safeHexToP3(linkColor),
       },
     }),
@@ -32,42 +55,119 @@ export const PageBodyHeader = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <BoundedBox
-        as="header"
-        bg="background"
-        color="link"
-        left={0}
-        maxWidth="none"
+      <Box
         position={isTransparent ? 'absolute' : 'static'}
-        pyScale="s"
+        left={0}
         right={0}
         top={0}
         zIndex="header"
-        {...props}
+        color="link"
       >
-        <Flex alignItems="center" justifyContent="space-between">
-          {(logoImageFluid || logoImageURL) && (
-            <Image
-              fluid={logoImageFluid}
-              src={logoImageURL}
-              alt={logoImageAlt}
-              width={linearScale('70px', '207px', { count: 5 })}
+        <BoundedBox
+          as="header"
+          bg="background"
+          maxWidth="none"
+          pyScale="s"
+          position="relative"
+          zIndex="headerBar"
+          {...props}
+        >
+          <Grid
+            gridTemplateColumns={['auto auto', 'auto 1fr']}
+            gridGapScale="m"
+            alignItems="center"
+            justifyContent={['space-between', 'auto']}
+          >
+            {(logoImageFluid || logoImageURL) && (
+              <Image
+                fluid={logoImageFluid}
+                src={logoImageURL}
+                alt={logoImageAlt}
+                width={linearScale('70px', '140px', { count: 5 })}
+              />
+            )}
+            <Flex
+              display={['none', 'flex']}
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+            >
+              <NavItems>
+                {primaryLinks.map(item => (
+                  <NavItem
+                    key={item.name}
+                    href={item.href}
+                    target={item.target}
+                  >
+                    {item.name}
+                  </NavItem>
+                ))}
+              </NavItems>
+              <NavItems>
+                {secondaryLinks.map(item => (
+                  <NavItem
+                    key={item.name}
+                    href={item.href}
+                    target={item.target}
+                  >
+                    {item.name}
+                  </NavItem>
+                ))}
+              </NavItems>
+            </Flex>
+            <HamburgerButton
+              display={[null, 'none']}
+              active={navIsOpen}
+              onClick={toggleNav}
             />
-          )}
-        </Flex>
-      </BoundedBox>
+          </Grid>
+        </BoundedBox>
+        <MobileNav
+          primaryLinks={primaryLinks}
+          secondaryLinks={secondaryLinks}
+          isOpen={navIsOpen}
+        />
+        <Box
+          display={[null, 'none']}
+          bg="black"
+          opacity={navIsOpen ? 0.5 : 0}
+          position="fixed"
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+          zIndex="headerMobileNavOverlap"
+          transitionProperty="opacity"
+          onClick={closeNav}
+          css={{ pointerEvents: navIsOpen ? 'auto' : 'none' }}
+        />
+      </Box>
     </ThemeProvider>
   )
 }
 
-PageBodyHeader.mapDataToProps = ({ data }) => ({
-  backgroundColor: data?.primary?.background_color,
-  linkColor: data?.primary?.link_color,
-  navigationUID: data?.primary?.navigation?.uid,
-  logoImageFluid: getImageFluid(data?.primary?.logo),
-  logoImageURL: data?.primary?.logo?.url,
-  logoImageAlt: data?.primary?.logo?.alt,
-})
+PageBodyHeader.mapDataToProps = ({ data, meta }) => {
+  const page = meta?.page
+
+  return {
+    backgroundColor: data?.primary?.background_color,
+    linkColor: data?.primary?.link_color,
+    navigationUID: data?.primary?.navigation?.uid,
+    logoImageFluid: getImageFluid(data?.primary?.logo),
+    logoImageURL: data?.primary?.logo?.url,
+    logoImageAlt: data?.primary?.logo?.alt,
+    primaryLinks: page?.data?.primary_links?.map(item => ({
+      name: item?.name?.text,
+      href: item?.link?.url,
+      target: item?.link?.target,
+    })),
+    secondaryLinks: page?.data?.secondary_links?.map(item => ({
+      name: item?.name?.text,
+      href: item?.link?.url,
+      target: item?.link?.target,
+    })),
+  }
+}
 
 export const fragment = graphql`
   fragment PageBodyHeader on Query {
@@ -79,9 +179,6 @@ export const fragment = graphql`
             primary {
               background_color
               link_color
-              navigation {
-                uid
-              }
               logo {
                 alt
                 localFile {
@@ -98,6 +195,24 @@ export const fragment = graphql`
                 }
               }
             }
+          }
+        }
+        primary_links {
+          name {
+            text
+          }
+          link {
+            url
+            target
+          }
+        }
+        secondary_links {
+          name {
+            text
+          }
+          link {
+            url
+            target
           }
         }
       }

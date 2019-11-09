@@ -3,9 +3,10 @@ import { graphql } from 'gatsby'
 import { linearScale } from 'styled-system-scale'
 
 import { safeHexToP3 } from 'src/helpers'
+import { useSettingsData } from 'src/hooks'
 
-import { ThemeProvider, Grid, Link, SVG, Text } from 'system'
-import { BoundedBox } from 'src/components'
+import { ThemeProvider, Grid, SVG, Text } from 'system'
+import { BoundedBox, Anchor } from 'src/components'
 import { ReactComponent as AssetLogoAAFDistrict13SVG } from 'src/assets/logo-aaf-district-13.svg'
 import { ReactComponent as AssetIconFacebookSVG } from 'src/assets/icon-facebook.svg'
 import { ReactComponent as AssetIconInstagramSVG } from 'src/assets/icon-instagram.svg'
@@ -18,6 +19,7 @@ export const PageBodyFooter = ({
   ...props
 }) => {
   const isTransparent = !Boolean(backgroundColor)
+  const settingsData = useSettingsData()
 
   const theme = useMemo(
     () => ({
@@ -50,34 +52,40 @@ export const PageBodyFooter = ({
           gridTemplateColumns="auto 1fr auto auto"
           alignItems="center"
         >
-          <Link href="" color="link">
+          <Anchor href={settingsData?.aaf_hawaii_link?.url} target="_blank">
             <SVG
               x={74}
               y={69}
               svg={AssetLogoAAFDistrict13SVG}
               width={linearScale('32px', '74px', { count: 5 })}
             />
-          </Link>
-          <Text as="p" fontSizeScale="s" lineHeight="1.2">
+          </Anchor>
+          <Text as="p" fontSizeScale="t">
             {copyright ||
               `© ${new Date().getFullYear()} Pele Awards. All rights reserved.`}
           </Text>
-          <Link href="" color="link">
+          <Anchor
+            href={`https://facebook.com/${settingsData?.facebook_handle?.text}`}
+            target="_blank"
+          >
             <SVG
               x={31}
               y={57}
               svg={AssetIconFacebookSVG}
               width={linearScale('16px', '30px', { count: 5 })}
             />
-          </Link>
-          <Link href="" color="link">
+          </Anchor>
+          <Anchor
+            href={`https://instagram.com/${settingsData?.instagram_handle?.text}`}
+            target="_blank"
+          >
             <SVG
               x={1}
               y={1}
               svg={AssetIconInstagramSVG}
               width={linearScale('31px', '60px', { count: 5 })}
             />
-          </Link>
+          </Anchor>
         </Grid>
       </BoundedBox>
     </ThemeProvider>

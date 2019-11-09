@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
 import { getRichText, propPairsEq } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
-import { Box, Grid, Link } from 'system'
+import { ThemeProvider, Box, Grid, Link } from 'system'
 import {
   BoundedBox,
   HTMLContent,
@@ -28,56 +28,64 @@ export const PageBodyEventDetails = ({
   details = [],
   ...props
 }) => {
-  const backgroundColorP3 = safeHexToP3(backgroundColor)
-  const headlineColorP3 = safeHexToP3(headlineColor)
-  const subheadlineColorP3 = safeHexToP3(subheadlineColor)
-  const textColorP3 = safeHexToP3(textColor)
-  const linkColorP3 = safeHexToP3(linkColor)
-  const buttonBackgroundColorP3 = safeHexToP3(buttonBackgroundColor)
-  const buttonColorP3 = safeHexToP3(buttonColor)
+  const theme = useMemo(
+    () => ({
+      colors: {
+        background: safeHexToP3(backgroundColor),
+        headline: safeHexToP3(headlineColor),
+        subheadline: safeHexToP3(subheadlineColor),
+        body: safeHexToP3(textColor),
+        link: safeHexToP3(linkColor),
+        buttonBackground: safeHexToP3(buttonBackgroundColor),
+        button: safeHexToP3(buttonColor),
+      },
+    }),
+    [
+      backgroundColor,
+      buttonBackgroundColor,
+      buttonColor,
+      headlineColor,
+      linkColor,
+      subheadlineColor,
+      textColor,
+    ],
+  )
 
   return (
-    <BoundedBox as="section" bg={backgroundColorP3} {...props}>
-      <StandardGrid alignItems="baseline" gridRowGapScale="xl">
-        <HTMLContent
-          gridColumn={['1 / -1', '1 / span 9']}
-          html={textHTML}
-          color={textColorP3}
-          maxWidth="xl"
-          componentOverrides={{
-            h1: Comp => props => <Comp color={headlineColorP3} {...props} />,
-            a: Comp => props => <Comp color={linkColorP3} {...props} />,
-          }}
-        />
-        <Grid
-          as="dl"
-          gridGapScale="l"
-          gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
-          gridColumn="1 / -1"
-          alignContent="start"
-        >
-          {details.map(detail => (
-            <Box key={detail.name}>
-              <Subheading as="dt" color={subheadlineColorP3} mbScale="t-">
-                {detail.name}
-              </Subheading>
-              <HTMLContent
-                html={detail.textHTML}
-                color={textColorP3}
-                fontSizeScale="s"
-                width={5 / 6}
-                componentOverrides={{
-                  h3: Comp => props => (
-                    <Comp as="p" color={textColorP3} {...props} />
-                  ),
-                  a: Comp => props => <Comp color={linkColorP3} {...props} />,
-                }}
-              />
-            </Box>
-          ))}
-        </Grid>
-      </StandardGrid>
-    </BoundedBox>
+    <ThemeProvider theme={theme}>
+      <BoundedBox as="section" id="event-details" bg="background" {...props}>
+        <StandardGrid alignItems="baseline" gridRowGapScale="xl">
+          <HTMLContent
+            gridColumn={['1 / -1', '1 / span 9']}
+            html={textHTML}
+            maxWidth="xl"
+          />
+          <Grid
+            as="dl"
+            gridGapScale="l"
+            gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
+            gridColumn="1 / -1"
+            alignContent="start"
+          >
+            {details.map(detail => (
+              <Box key={detail.name}>
+                <Subheading as="dt" mbScale="t-">
+                  {detail.name}
+                </Subheading>
+                <HTMLContent
+                  html={detail.textHTML}
+                  fontSizeScale="s"
+                  width={5 / 6}
+                  componentOverrides={{
+                    h3: Comp => props => <Comp as="p" {...props} />,
+                  }}
+                />
+              </Box>
+            ))}
+          </Grid>
+        </StandardGrid>
+      </BoundedBox>
+    </ThemeProvider>
   )
 }
 

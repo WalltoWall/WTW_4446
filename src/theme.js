@@ -34,6 +34,7 @@ const theme = {
     serif: 'serif',
   },
   fontSizeScales: {
+    t: linearScale('12px', '18px', { count }),
     s: linearScale('15px', '24px', { count }),
     b: linearScale('17px', '32px', { count }),
     m: linearScale('21px', '48px', { count }),
@@ -68,7 +69,7 @@ const theme = {
     s: linearScale('12px', '34px', { count }),
     m: linearScale('20px', '45px', { count }),
     l: linearScale('30px', '57px', { count }),
-    xl: linearScale('40px', '120px', { count }),
+    xl: linearScale('40px', '100px', { count }),
     xxl: linearScale('50px', '150px', { count }),
   },
 
@@ -84,7 +85,12 @@ const theme = {
   /***
    * Z Indices
    */
-  zIndices: {},
+  zIndices: {
+    header: 1,
+    headerBar: 3,
+    headerMobileNav: 2,
+    headerMobileNavOverlap: 1,
+  },
 
   /***
    * Variants

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
 import { getRichText, propPairsEq } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
+import { ThemeProvider } from 'system'
 import { BoundedBox, HTMLContent, StandardGrid } from 'src/components'
 
 export const PageBodyText = ({
@@ -11,29 +12,32 @@ export const PageBodyText = ({
   linkColor = 'inherit',
   headlineColor = 'inherit',
   textColor = 'inherit',
-  fontFamily = 'inherit',
   textHTML,
   ...props
 }) => {
-  const backgroundColorP3 = safeHexToP3(backgroundColor)
-  const headlineColorP3 = safeHexToP3(headlineColor)
-  const textColorP3 = safeHexToP3(textColor)
-  const linkColorP3 = safeHexToP3(linkColor)
+  const theme = useMemo(
+    () => ({
+      colors: {
+        background: safeHexToP3(backgroundColor),
+        headline: safeHexToP3(headlineColor),
+        body: safeHexToP3(textColor),
+        link: safeHexToP3(linkColor),
+      },
+    }),
+    [backgroundColor, headlineColor, linkColor, textColor],
+  )
 
   return (
-    <BoundedBox as="section" bg={backgroundColorP3} {...props}>
-      <StandardGrid>
-        <HTMLContent
-          gridColumn={['1 / -1', null, '1 / span 9']}
-          html={textHTML}
-          color={textColorP3}
-          componentOverrides={{
-            h1: Comp => props => <Comp color={headlineColorP3} {...props} />,
-            a: Comp => props => <Comp color={linkColorP3} {...props} />,
-          }}
-        />
-      </StandardGrid>
-    </BoundedBox>
+    <ThemeProvider theme={theme}>
+      <BoundedBox as="section" bg="background" {...props}>
+        <StandardGrid>
+          <HTMLContent
+            gridColumn={['1 / -1', null, '1 / span 9']}
+            html={textHTML}
+          />
+        </StandardGrid>
+      </BoundedBox>
+    </ThemeProvider>
   )
 }
 
