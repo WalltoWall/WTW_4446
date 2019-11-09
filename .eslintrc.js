@@ -9,6 +9,7 @@ module.exports = {
     'react/jsx-uses-react': 'warn',
     'react/jsx-uses-vars': 'warn',
     'react/jsx-key': 'warn',
+    'react/jsx-no-undef': 'error',
     'react-hooks/rules-of-hooks': 'warn',
     'react-hooks/exhaustive-deps': 'warn',
   },

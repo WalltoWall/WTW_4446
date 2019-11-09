@@ -21,7 +21,7 @@ const defaultComponents = {
 }
 
 export const HTMLContent = ({ html, componentOverrides, ...props }) => (
-  <Text {...props}>
+  <Text color="body" {...props}>
     <HTMLRenderer
       html={html}
       components={defaultComponents}

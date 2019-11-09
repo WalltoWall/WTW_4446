@@ -29,11 +29,10 @@
         "label": "Live Homepage"
       }
     },
-    "site_copyright": {
-      "type": "StructuredText",
+    "aaf_hawaii_link": {
+      "type": "Link",
       "config": {
-        "single": "paragraph",
-        "label": "Site Copyright"
+        "label": "AAF Hawaii Link"
       }
     },
     "facebook_handle": {

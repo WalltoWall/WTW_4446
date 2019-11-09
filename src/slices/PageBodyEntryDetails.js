@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
 import { getRichText, propPairsEq } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
-import { Box, Grid, Link } from 'system'
+import { ThemeProvider, Box, Grid, Link } from 'system'
 import {
   BoundedBox,
   HTMLContent,
@@ -30,79 +30,80 @@ export const PageBodyEntryDetails = ({
   deadlines = [],
   ...props
 }) => {
-  const backgroundColorP3 = safeHexToP3(backgroundColor)
-  const headlineColorP3 = safeHexToP3(headlineColor)
-  const subheadlineColorP3 = safeHexToP3(subheadlineColor)
-  const textColorP3 = safeHexToP3(textColor)
-  const linkColorP3 = safeHexToP3(linkColor)
-  const buttonBackgroundColorP3 = safeHexToP3(buttonBackgroundColor)
-  const buttonColorP3 = safeHexToP3(buttonColor)
+  const theme = useMemo(
+    () => ({
+      colors: {
+        background: safeHexToP3(backgroundColor),
+        headline: safeHexToP3(headlineColor),
+        subheadline: safeHexToP3(subheadlineColor),
+        body: safeHexToP3(textColor),
+        link: safeHexToP3(linkColor),
+        buttonBackground: safeHexToP3(buttonBackgroundColor),
+        button: safeHexToP3(buttonColor),
+      },
+    }),
+    [
+      backgroundColor,
+      buttonBackgroundColor,
+      buttonColor,
+      headlineColor,
+      linkColor,
+      subheadlineColor,
+      textColor,
+    ],
+  )
 
   return (
-    <BoundedBox as="section" bg={backgroundColorP3} {...props}>
-      <StandardGrid alignItems="baseline">
-        <HTMLContent
-          gridColumn={['1 / -1', '1 / span 6']}
-          gridRow={[null, '1']}
-          html={textHTML}
-          color={textColorP3}
-          componentOverrides={{
-            h1: Comp => props => (
-              <Comp color={headlineColorP3} width={[null, 5 / 6]} {...props} />
-            ),
-            a: Comp => props => <Comp color={linkColorP3} {...props} />,
-          }}
-        />
-        <Grid
-          as="dl"
-          gridGapScale="m"
-          gridColumn={['1 / -1', '7 / span 6']}
-          gridRow={[null, '1 / span 2']}
-          alignContent="start"
-        >
-          {deadlines.map(deadline => (
-            <Box key={deadline.name}>
-              <Subheading as="dt" color={subheadlineColorP3} mbScale="t-">
-                {deadline.name}
-              </Subheading>
-              <Heading as="dd" color={textColorP3}>
-                {deadline.date}
-              </Heading>
-            </Box>
-          ))}
-        </Grid>
-        <Grid
-          as="ul"
-          gridGapScale="s"
-          gridColumn={['1 / -1', '1 / span 6']}
-          gridRow={[null, '2']}
-          css={{ placeItems: 'start' }}
-        >
-          {entryBookletButtonHref && (
-            <Button
-              as={Link}
-              href={entryBookletButtonHref}
-              bg={buttonBackgroundColorP3}
-              color={buttonColorP3}
-              target="_blank"
-            >
-              {entryBookletButtonText}
-            </Button>
-          )}
-          {onlineEntryButtonHref && (
-            <Button
-              as={Link}
-              href={onlineEntryButtonHref}
-              bg={buttonBackgroundColorP3}
-              color={buttonColorP3}
-              target="_blank"
-            >
-              {onlineEntryButtonText}
-            </Button>
-          )}
-        </Grid>
-      </StandardGrid>
-    </BoundedBox>
+    <ThemeProvider theme={theme}>
+      <BoundedBox as="section" id="entry-details" bg="background" {...props}>
+        <StandardGrid alignItems="baseline" gridRowGapScale="l">
+          <HTMLContent
+            gridColumn={['1 / -1', '1 / span 6']}
+            gridRow={[null, '1']}
+            html={textHTML}
+            componentOverrides={{
+              h1: Comp => props => <Comp width={[null, 5 / 6]} {...props} />,
+            }}
+          />
+          <Grid
+            as="dl"
+            gridGapScale="m"
+            gridColumn={['1 / -1', '7 / span 6']}
+            gridRow={[null, '1 / span 2']}
+            alignContent="start"
+          >
+            {deadlines.map(deadline => (
+              <Box key={deadline.name}>
+                <Subheading as="dt" mbScale="t-">
+                  {deadline.name}
+                </Subheading>
+                <Heading as="dd" color="body">
+                  {deadline.date}
+                </Heading>
+              </Box>
+            ))}
+          </Grid>
+          <Grid
+            as="ul"
+            gridGapScale="s"
+            gridColumn={['1 / -1', '1 / span 6']}
+            gridRow={[null, '2']}
+            css={{ placeItems: 'start' }}
+          >
+            {entryBookletButtonHref && (
+              <Button as={Link} href={entryBookletButtonHref} target="_blank">
+                {entryBookletButtonText}
+              </Button>
+            )}
+            {onlineEntryButtonHref && (
+              <Button as={Link} href={onlineEntryButtonHref} target="_blank">
+                {onlineEntryButtonText}
+              </Button>
+            )}
+          </Grid>
+        </StandardGrid>
+      </BoundedBox>
+    </ThemeProvider>
   )
 }
 

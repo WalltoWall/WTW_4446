@@ -2,10 +2,11 @@
 require('dotenv').config()
 
 // Configure the following constants for the project.
-const SITE_TITLE = 'SITE_TITLE'
-const SITE_TITLE_SHORT = 'SITE_TITLE_SHORT'
-const SITE_DESCRIPTION = 'SITE_DESCRIPTION'
-const SITE_URL = 'https://example.com'
+const SITE_TITLE = 'Pele Awards'
+const SITE_TITLE_SHORT = 'Peles'
+const SITE_DESCRIPTION =
+  'The Pele Awards is one of 15 District Competitions for the American Advertising Awards recognizing the best advertising and creative design work in Hawai‘i.'
+const SITE_URL = 'https://peleawards.com'
 
 // Load Primsic custom type schemas.
 const schemas = require('./src/schemas')

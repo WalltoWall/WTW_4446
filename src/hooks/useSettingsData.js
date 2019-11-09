@@ -6,16 +6,13 @@ export const useSettingsData = () => {
       prismicSettings {
         data {
           site_name {
-            html
             text
           }
           site_description {
-            html
             text
           }
-          site_copyright {
-            html
-            text
+          aaf_hawaii_link {
+            url
           }
           facebook_handle {
             text

@@ -35,21 +35,6 @@ export const HamburgerButton = ({ active, ...props }) => {
     config: config.stiff,
   })
 
-  const middleSpring = useSpring({
-    from: {
-      scale: 'scaleY(1)',
-    },
-    to: async next => {
-      if (active) {
-        next({ scale: 'scaleY(0)' })
-      } else {
-        await delay(200)
-        next({ scale: 'scaleY(1)' })
-      }
-    },
-    config: config.stiff,
-  })
-
   const bottomSpring = useSpring({
     from: {
       y: `translateY(${active ? -45 : 0}%)`,
@@ -71,8 +56,8 @@ export const HamburgerButton = ({ active, ...props }) => {
 
   return (
     <Button
-      width="28px"
-      height="22px"
+      width="30px"
+      height="16px"
       position="relative"
       outline="none"
       {...props}
@@ -87,17 +72,6 @@ export const HamburgerButton = ({ active, ...props }) => {
         style={{ transform: topSpring.y }}
       >
         <Bar left={0} top={0} style={{ transform: topSpring.rot }} />
-      </Box>
-      <Box
-        as={a(Box)}
-        position="absolute"
-        top={0}
-        left={0}
-        height="100%"
-        width="100%"
-        style={{ transform: middleSpring.scale }}
-      >
-        <Bar left={0} top="50%" transform="translateY(-50%)" />
       </Box>
       <Box
         as={a(Box)}
