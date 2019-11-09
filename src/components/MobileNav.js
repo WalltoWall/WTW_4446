@@ -4,10 +4,10 @@ import { a, useSpring } from 'react-spring'
 import { Box, Link } from 'system'
 import { BoundedBox, Subheading } from 'src/components'
 
-const NavItem = ({ children, href, target, ...props }) => (
+const NavItem = ({ children, href, target, closeNav, ...props }) => (
   <Box as="li" mbScale="s" boxStyle="lastNoMargin" {...props}>
     <Subheading as="span" fontSizeScale="xl">
-      <Link href={href} target={target}>
+      <Link href={href} target={target} onClick={closeNav}>
         {children}
       </Link>
     </Subheading>
@@ -18,6 +18,7 @@ export const MobileNav = ({
   isOpen = false,
   primaryLinks = [],
   secondaryLinks = [],
+  closeNav,
   ...props
 }) => {
   const animValues = useSpring({
@@ -42,7 +43,12 @@ export const MobileNav = ({
       <Box as={a(Box)} style={{ opacity: animValues.opacity }}>
         <Box as="ul">
           {primaryLinks.map(item => (
-            <NavItem key={item.name} href={item.href} target={item.target}>
+            <NavItem
+              key={item.name}
+              href={item.href}
+              target={item.target}
+              closeNav={closeNav}
+            >
               {item.name}
             </NavItem>
           ))}
@@ -57,7 +63,12 @@ export const MobileNav = ({
         />
         <Box as="ul">
           {secondaryLinks.map(item => (
-            <NavItem key={item.name} href={item.href} target={item.target}>
+            <NavItem
+              key={item.name}
+              href={item.href}
+              target={item.target}
+              closeNav={closeNav}
+            >
               {item.name}
             </NavItem>
           ))}
