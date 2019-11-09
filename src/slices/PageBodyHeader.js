@@ -126,6 +126,8 @@ export const PageBodyHeader = ({
           primaryLinks={primaryLinks}
           secondaryLinks={secondaryLinks}
           isOpen={navIsOpen}
+          closeNav={closeNav}
+          display={['block', 'none']}
         />
         <Box
           display={[null, 'none']}
