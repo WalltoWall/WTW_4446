@@ -19,7 +19,6 @@
     "@walltowall/hex-to-p3": "^0.2.0",
     "@walltowall/hooks": "^0.7.3",
     "@walltowall/system": "^11.0.4",
-    "boolean": "^2.0.2",
     "delay": "^4.3.0",
     "dotenv": "^8.1.0",
     "gatsby": "^2.15.19",
@@ -35,7 +34,6 @@
     "styled-components": "^5.0.0-rc.1",
     "styled-system-scale": "^0.6.1",
     "tiny-compose-fns": "^0.13.0",
-    "typeface-inter": "^3.10.0",
     "zustand": "^2.2.1"
   },
   "devDependencies": {
