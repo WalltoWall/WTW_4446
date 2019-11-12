@@ -57,10 +57,10 @@ export const Judge = ({
         </ImageContainer>
       </Flex>
       <Flex
-        justifyContent={[null, imageIsOnLeft ? 'flex-start' : 'flex-end']}
+        justifyContent={['center', imageIsOnLeft ? 'flex-start' : 'flex-end']}
         gridColumn={[null, imageIsOnLeft ? 2 : 1]}
       >
-        <Box width="100%" maxWidth={[null, '30ch']}>
+        <Box width="100%" maxWidth={['30rem', '30ch']}>
           {name && (
             <Heading fontSizeScale="xl" mbScale="t-">
               {name}
