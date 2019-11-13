@@ -260,7 +260,9 @@
               "image": {
                 "type": "Image",
                 "config": {
-                  "constraint": {},
+                  "constraint": {
+                    "width": 2000
+                  },
                   "thumbnails": [
                     {
                       "name": "Tablet",
@@ -301,7 +303,9 @@
               "logo": {
                 "type": "Image",
                 "config": {
-                  "constraint": {},
+                  "constraint": {
+                    "width": 500
+                  },
                   "thumbnails": [],
                   "label": "Logo"
                 }
@@ -407,7 +411,9 @@
               "image": {
                 "type": "Image",
                 "config": {
-                  "constraint": {},
+                  "constraint": {
+                    "width": 1000
+                  },
                   "thumbnails": [
                     {
                       "name": "Tablet",
