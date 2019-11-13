@@ -19,7 +19,7 @@ const NavItems = props => (
 
 const NavItem = ({ children, href, target, ...props }) => (
   <Box as="li" {...props}>
-    <Subheading as="span" textAlign="center" fontSizeScale="b">
+    <Subheading as="span" textAlign="center" fontSizeScale="m">
       <Link href={href} target={target}>
         {children}
       </Link>
@@ -79,12 +79,14 @@ export const PageBodyHeader = ({
             justifyContent={['space-between', 'auto']}
           >
             {(logoImageFluid || logoImageURL) && (
-              <Image
-                fluid={logoImageFluid}
-                src={logoImageURL}
-                alt={logoImageAlt}
-                width={linearScale('70px', '140px', { count: 5 })}
-              />
+              <Link href="/">
+                <Image
+                  fluid={logoImageFluid}
+                  src={logoImageURL}
+                  alt={logoImageAlt}
+                  width={linearScale('70px', '140px', { count: 5 })}
+                />
+              </Link>
             )}
             <Flex
               display={['none', 'flex']}

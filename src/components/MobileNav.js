@@ -53,26 +53,30 @@ export const MobileNav = ({
             </NavItem>
           ))}
         </Box>
-        <Box
-          as="hr"
-          border="none"
-          borderTop="2px solid"
-          opacity={0.25}
-          myScale="l"
-          width={1 / 8}
-        />
-        <Box as="ul">
-          {secondaryLinks.map(item => (
-            <NavItem
-              key={item.name}
-              href={item.href}
-              target={item.target}
-              closeNav={closeNav}
-            >
-              {item.name}
-            </NavItem>
-          ))}
-        </Box>
+        {secondaryLinks.length > 0 && (
+          <>
+            <Box
+              as="hr"
+              border="none"
+              borderTop="2px solid"
+              opacity={0.25}
+              myScale="l"
+              width={1 / 8}
+            />
+            <Box as="ul">
+              {secondaryLinks.map(item => (
+                <NavItem
+                  key={item.name}
+                  href={item.href}
+                  target={item.target}
+                  closeNav={closeNav}
+                >
+                  {item.name}
+                </NavItem>
+              ))}
+            </Box>
+          </>
+        )}
       </Box>
     </BoundedBox>
   )

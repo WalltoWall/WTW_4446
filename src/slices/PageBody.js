@@ -31,6 +31,10 @@ export const fragment = graphql`
     ...PageBodyJudges
     ...PageBodyText
 
+    prismicPage(uid: { eq: $uid }) {
+      uid
+    }
+
     # The following slices do not have fragments:
   }
 `

@@ -15,6 +15,9 @@ export const PageBodyFullWidthImage = ({
   imageFluid,
   imageURL,
   imageAlt,
+  mobileImageFluid,
+  mobileImageURL,
+  mobileImageAlt,
   ...props
 }) => {
   const variant = variants[variantName]
@@ -22,6 +25,14 @@ export const PageBodyFullWidthImage = ({
   return (
     <Box as="section" {...props}>
       <Image
+        display={[null, 'none']}
+        fluid={mobileImageFluid}
+        src={mobileImageURL}
+        alt={mobileImageAlt}
+        height={variant.imageHeight}
+      />
+      <Image
+        display={['none', 'block']}
         fluid={imageFluid}
         src={imageURL}
         alt={imageAlt}
@@ -36,6 +47,9 @@ PageBodyFullWidthImage.mapDataToProps = ({ data }) => ({
   imageFluid: getImageFluid(data?.primary?.image),
   imageURL: data?.primary?.image?.url,
   imageAlt: data?.primary?.image?.alt,
+  mobileImageFluid: getImageFluid(data?.primary?.image?.thumbnails?.Tablet),
+  mobileImageURL: data?.primary?.image?.thumbnails?.Tablet?.url,
+  mobileImageAlt: data?.primary?.image?.thumbnails?.Tablet?.alt,
 })
 
 export const fragment = graphql`
@@ -58,6 +72,23 @@ export const fragment = graphql`
                       pngCompressionSpeed: 10
                     ) {
                       ...GatsbyImageSharpFluid_noBase64
+                    }
+                  }
+                }
+                thumbnails {
+                  Tablet {
+                    alt
+                    localFile {
+                      childImageSharp {
+                        fluid(
+                          maxWidth: 600
+                          quality: 85
+                          srcSetBreakpoints: [400]
+                          pngCompressionSpeed: 10
+                        ) {
+                          ...GatsbyImageSharpFluid_noBase64
+                        }
+                      }
                     }
                   }
                 }
