@@ -88,7 +88,8 @@ export const PageBodyEntryDetails = ({
             gridGapScale="s"
             gridColumn={['1 / -1', '1 / span 6']}
             gridRow={[null, '2']}
-            css={{ placeItems: 'start' }}
+            alignItems="start"
+            justifyItems="start"
           >
             {entryBookletButtonHref && (
               <Button as={Link} href={entryBookletButtonHref} target="_blank">
