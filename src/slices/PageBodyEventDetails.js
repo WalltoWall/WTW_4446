@@ -10,6 +10,7 @@ import {
   HTMLContent,
   StandardGrid,
   Subheading,
+  Button,
 } from 'src/components'
 
 export const PageBodyEventDetails = ({
@@ -74,6 +75,7 @@ export const PageBodyEventDetails = ({
                   width={5 / 6}
                   componentOverrides={{
                     h3: Comp => props => <Comp as="p" mbScale="t" {...props} />,
+                    a: () => props => <Button as={Link} {...props} />,
                   }}
                 />
               </Box>
