@@ -70,8 +70,8 @@ export const PageBodyPastYears = ({
   )
 }
 
-PageBodyPastYears.Button = props => (
-  <Button as={Link} fontSizeScale="l" width="100%" {...props} />
+PageBodyPastYears.Button = ({ target = '_blank', ...props }) => (
+  <Button as={Link} target={target} fontSizeScale="l" width="100%" {...props} />
 )
 
 PageBodyPastYears.mapDataToProps = ({ data, context, nextContext }) =>
@@ -83,7 +83,10 @@ PageBodyPastYears.mapDataToProps = ({ data, context, nextContext }) =>
     buttonColor: data?.primary?.button_text_color,
     textHTML: getRichText(data?.primary?.text),
     children: data?.items?.map(item => (
-      <PageBodyPastYears.Button href={item?.url} target={item?.target}>
+      <PageBodyPastYears.Button
+        href={item?.button_link?.url}
+        target={item?.button_link?.target || undefined}
+      >
         {item?.button_text?.text}
       </PageBodyPastYears.Button>
     )),
