@@ -75,7 +75,9 @@ export const PageBodyEventDetails = ({
                   width={5 / 6}
                   componentOverrides={{
                     h3: Comp => props => <Comp as="p" mbScale="t" {...props} />,
-                    a: () => props => <Button as={Link} {...props} />,
+                    a: () => props => (
+                      <Button as={Link} mrScale="s" mbScale="s" {...props} />
+                    ),
                   }}
                 />
               </Box>
