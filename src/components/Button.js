@@ -14,7 +14,7 @@ export const Button = props => {
 
   return (
     <ButtonBase
-      pxScale={['m', 'l']}
+      pxScale={['m', null, null, 'l']}
       pyScale="s"
       fontSizeScale={['l', 'm']}
       lineHeight="subheadline"
