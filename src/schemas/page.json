@@ -197,7 +197,8 @@
           "text": [],
           "judges": [],
           "entry_details": [],
-          "event_details": []
+          "event_details": [],
+          "past_years": []
         },
         "choices": {
           "text": {
@@ -659,6 +660,63 @@
                   "allowTargetBlank": true,
                   "label": "Detail Text",
                   "placeholder": "Text for the detail"
+                }
+              }
+            }
+          },
+          "past_years": {
+            "type": "Slice",
+            "fieldset": "Past Years",
+            "description": "List of links to past sites",
+            "icon": "rotate_left",
+            "display": "grid",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "headline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Headline Color"
+                }
+              },
+              "button_background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Background Color"
+                }
+              },
+              "button_text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Text Color"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading1, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Text"
+                }
+              }
+            },
+            "repeat": {
+              "button_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Button Link"
+                }
+              },
+              "button_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Button Text"
                 }
               }
             }

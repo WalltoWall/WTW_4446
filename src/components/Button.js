@@ -26,6 +26,7 @@ export const Button = props => {
       outline="0"
       onFocus={() => handleFocus(true)}
       onBlur={() => handleFocus(false)}
+      textAlign="center"
       {...bind()}
       {...props}
       css={{ whiteSpace: 'nowrap' }}
