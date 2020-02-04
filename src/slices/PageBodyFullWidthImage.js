@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { camelCase } from 'tiny-compose-fns'
-import { notEmpty, getImageFluid } from 'helpers'
+import { notEmpty } from 'helpers'
 
 import { Box, Image } from 'system'
 
@@ -24,6 +24,7 @@ export const PageBodyFullWidthImage = ({
 
   return (
     <Box as="section" {...props}>
+      {/*
       <Image
         display={[null, 'none']}
         fluid={mobileImageFluid}
@@ -31,8 +32,9 @@ export const PageBodyFullWidthImage = ({
         alt={mobileImageAlt}
         height={variant.imageHeight}
       />
+      */}
       <Image
-        display={['none', 'block']}
+        // display={['none', 'block']}
         fluid={imageFluid}
         src={imageURL}
         alt={imageAlt}
@@ -44,10 +46,10 @@ export const PageBodyFullWidthImage = ({
 
 PageBodyFullWidthImage.mapDataToProps = ({ data }) => ({
   variant: notEmpty(camelCase(data?.primary?.variant)),
-  imageFluid: getImageFluid(data?.primary?.image),
+  imageFluid: data?.primary?.image?.fluid,
   imageURL: data?.primary?.image?.url,
   imageAlt: data?.primary?.image?.alt,
-  mobileImageFluid: getImageFluid(data?.primary?.image?.thumbnails?.Tablet),
+  mobileImageFluid: data?.primary?.image?.thumbnails?.Tablet?.fluid,
   mobileImageURL: data?.primary?.image?.thumbnails?.Tablet?.url,
   mobileImageAlt: data?.primary?.image?.thumbnails?.Tablet?.alt,
 })
@@ -63,32 +65,14 @@ export const fragment = graphql`
               variant
               image {
                 alt
-                localFile {
-                  childImageSharp {
-                    fluid(
-                      maxWidth: 1000
-                      quality: 85
-                      srcSetBreakpoints: [400]
-                      pngCompressionSpeed: 10
-                    ) {
-                      ...GatsbyImageSharpFluid_noBase64
-                    }
-                  }
+                fluid(maxWidth: 1000) {
+                  ...GatsbyPrismicImageFluid
                 }
                 thumbnails {
                   Tablet {
                     alt
-                    localFile {
-                      childImageSharp {
-                        fluid(
-                          maxWidth: 600
-                          quality: 85
-                          srcSetBreakpoints: [400]
-                          pngCompressionSpeed: 10
-                        ) {
-                          ...GatsbyImageSharpFluid_noBase64
-                        }
-                      }
+                    fluid(maxWidth: 600) {
+                      ...GatsbyPrismicImageFluid
                     }
                   }
                 }

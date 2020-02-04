@@ -1,18 +1,13 @@
 import React, { useMemo } from 'react'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
-import { PageTemplate as PageTemplateBase } from 'gatsby-theme-ww-prismic/src/templates/page'
+import { GenericTemplate } from 'gatsby-theme-ww-prismic'
 
 import { ThemeProvider, Text } from 'system'
-import { PageWrapper } from 'src/components'
 
-const injectSlices = list => list
+import { slicesMap } from 'src/slices/PageBody'
 
-export const PageTemplate = ({
-  data,
-  listMiddleware = injectSlices,
-  ...props
-}) => {
+export const PageTemplate = ({ data, ...props }) => {
   const page = data.prismicPage
   const fontsTheme = useMemo(
     () => ({
@@ -45,17 +40,17 @@ export const PageTemplate = ({
             ),
         )}
       </Helmet>
-      <PageWrapper>
-        <ThemeProvider theme={fontsTheme}>
-          <Text fontFamily="body" lineHeight="body" fontWeight="body">
-            <PageTemplateBase
-              data={data}
-              listMiddleware={listMiddleware}
-              {...props}
-            />
-          </Text>
-        </ThemeProvider>
-      </PageWrapper>
+      <ThemeProvider theme={fontsTheme}>
+        <Text fontFamily="body" lineHeight="body" fontWeight="body">
+          <GenericTemplate
+            customType="page"
+            sliceZoneId="body"
+            slicesMap={slicesMap}
+            data={data}
+            {...props}
+          />
+        </Text>
+      </ThemeProvider>
     </>
   )
 }
@@ -65,8 +60,14 @@ export default PageTemplate
 export const query = graphql`
   query($uid: String!) {
     prismicPage(uid: { eq: $uid }) {
-      ...PageTemplate
+      ...PageParentRecursive
+      uid
       data {
+        title {
+          text
+        }
+        meta_title
+        meta_description
         webfont_css {
           url
         }
@@ -85,6 +86,9 @@ export const query = graphql`
         }
         body_font_weight
         body_line_height
+        body {
+          __typename
+        }
       }
     }
     ...SlicesPageBody

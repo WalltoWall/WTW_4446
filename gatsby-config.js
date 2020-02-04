@@ -22,6 +22,7 @@ module.exports = {
         siteDescription: SITE_DESCRIPTION,
         siteUrl: SITE_URL,
         withNetlify: true,
+        withAxe: false,
       },
     },
     {
