@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
 import { camelCase } from 'tiny-compose-fns'
-import { notEmpty, getImageFluid, getRichText } from 'helpers'
+import { notEmpty, getRichText } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
@@ -12,6 +12,8 @@ export const PageBodyJudges = ({
   backgroundColor = 'white',
   linkColor = 'inherit',
   headlineColor = 'inherit',
+  judgeHeadlineColor = 'inherit',
+  judgeBackgroundColor = 'inherit',
   buttonBackgroundColor = 'black',
   buttonColor = 'white',
   textColor = 'inherit',
@@ -41,10 +43,33 @@ export const PageBodyJudges = ({
     ],
   )
 
+  const judgeTheme = useMemo(
+    () => ({
+      colors: {
+        background: safeHexToP3(judgeBackgroundColor),
+        body: safeHexToP3(textColor),
+        button: safeHexToP3(buttonColor),
+        buttonBackground: safeHexToP3(buttonBackgroundColor),
+        headline: safeHexToP3(judgeHeadlineColor),
+        link: safeHexToP3(linkColor),
+        subheadline: safeHexToP3(headlineColor),
+      },
+    }),
+    [
+      buttonBackgroundColor,
+      buttonColor,
+      headlineColor,
+      judgeBackgroundColor,
+      judgeHeadlineColor,
+      linkColor,
+      textColor,
+    ],
+  )
+
   return (
     <ThemeProvider theme={theme}>
       <BoundedBox as="section" id="judges" bg="background" {...props}>
-        <StandardGrid gridRowGapScale="xl">
+        <StandardGrid>
           {headline && (
             <Heading gridColumn="1 / -1" textAlign="center" color="body">
               {headline}
@@ -52,9 +77,9 @@ export const PageBodyJudges = ({
           )}
           <Grid
             gridColumn={['1 / -1', null, null, '2 / span 10']}
-            gridGapScale="xl"
+            gridGapScale="m"
           >
-            {children}
+            <ThemeProvider theme={judgeTheme}>{children}</ThemeProvider>
           </Grid>
         </StandardGrid>
       </BoundedBox>
@@ -67,6 +92,8 @@ PageBodyJudges.Judge = Judge
 PageBodyJudges.mapDataToProps = ({ data }) => ({
   backgroundColor: data?.primary?.background_color,
   headlineColor: data?.primary?.headline_color,
+  judgeHeadlineColor: data?.primary?.judge_headline_color,
+  judgeBackgroundColor: data?.primary?.judge_background_color,
   textColor: data?.primary?.text_color,
   linkColor: data?.primary?.link_color,
   buttonBackgroundColor: data?.primary?.button_background_color,
@@ -79,7 +106,7 @@ PageBodyJudges.mapDataToProps = ({ data }) => ({
       jobTitle={item?.job_title?.text}
       location={item?.location?.text}
       bioHTML={getRichText(item?.bio)}
-      imageFluid={getImageFluid(item?.image)}
+      imageFluid={item?.image?.fluid}
       imageURL={item?.image?.url}
       imageAlt={item?.image?.alt}
     />
@@ -96,6 +123,8 @@ export const fragment = graphql`
             primary {
               background_color
               headline_color
+              judge_headline_color
+              judge_background_color
               text_color
               link_color
               button_background_color
@@ -121,17 +150,8 @@ export const fragment = graphql`
               }
               image {
                 alt
-                localFile {
-                  childImageSharp {
-                    fluid(
-                      maxWidth: 1000
-                      quality: 85
-                      srcSetBreakpoints: [400]
-                      pngCompressionSpeed: 10
-                    ) {
-                      ...GatsbyImageSharpFluid_noBase64
-                    }
-                  }
+                fluid(maxWidth: 800) {
+                  ...GatsbyPrismicImageFluid
                 }
               }
             }

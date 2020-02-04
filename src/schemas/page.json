@@ -310,14 +310,6 @@
                   "thumbnails": [],
                   "label": "Logo"
                 }
-              },
-              "navigation": {
-                "type": "Link",
-                "config": {
-                  "select": "document",
-                  "customtypes": ["navigation"],
-                  "label": "Navigation"
-                }
               }
             },
             "repeat": {}
@@ -374,6 +366,18 @@
                 "type": "Color",
                 "config": {
                   "label": "Headline Color"
+                }
+              },
+              "judge_headline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Judge Headline Color"
+                }
+              },
+              "judge_background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Judge Background Color"
                 }
               },
               "text_color": {

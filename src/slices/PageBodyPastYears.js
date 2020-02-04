@@ -74,23 +74,22 @@ PageBodyPastYears.Button = ({ target = '_blank', ...props }) => (
   <Button as={Link} target={target} fontSizeScale="l" width="100%" {...props} />
 )
 
-PageBodyPastYears.mapDataToProps = ({ data, context, nextContext }) =>
-  console.log(data) || {
-    nextSharesBg: propPairsEq('bg', context, nextContext),
-    backgroundColor: data?.primary?.background_color,
-    headlineColor: data?.primary?.headline_color,
-    buttonBackgroundColor: data?.primary?.button_background_color,
-    buttonColor: data?.primary?.button_text_color,
-    textHTML: getRichText(data?.primary?.text),
-    children: data?.items?.map(item => (
-      <PageBodyPastYears.Button
-        href={item?.button_link?.url}
-        target={item?.button_link?.target || undefined}
-      >
-        {item?.button_text?.text}
-      </PageBodyPastYears.Button>
-    )),
-  }
+PageBodyPastYears.mapDataToProps = ({ data, context, nextContext }) => ({
+  nextSharesBg: propPairsEq('bg', context, nextContext),
+  backgroundColor: data?.primary?.background_color,
+  headlineColor: data?.primary?.headline_color,
+  buttonBackgroundColor: data?.primary?.button_background_color,
+  buttonColor: data?.primary?.button_text_color,
+  textHTML: getRichText(data?.primary?.text),
+  children: data?.items?.map(item => (
+    <PageBodyPastYears.Button
+      href={item?.button_link?.url}
+      target={item?.button_link?.target || undefined}
+    >
+      {item?.button_text?.text}
+    </PageBodyPastYears.Button>
+  )),
+})
 
 PageBodyPastYears.mapDataToContext = ({ data }) => ({
   bg: data?.primary?.background_color,

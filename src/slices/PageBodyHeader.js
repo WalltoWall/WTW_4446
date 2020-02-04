@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { graphql } from 'gatsby'
 import { linearScale } from 'styled-system-scale'
-import { getImageFluid } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
@@ -157,7 +156,7 @@ PageBodyHeader.mapDataToProps = ({ data, meta }) => {
     backgroundColor: data?.primary?.background_color,
     linkColor: data?.primary?.link_color,
     navigationUID: data?.primary?.navigation?.uid,
-    logoImageFluid: getImageFluid(data?.primary?.logo),
+    logoImageFluid: data?.primary?.logo?.fluid,
     logoImageURL: data?.primary?.logo?.url,
     logoImageAlt: data?.primary?.logo?.alt,
     primaryLinks: page?.data?.primary_links?.map(item => ({
@@ -185,17 +184,8 @@ export const fragment = graphql`
               link_color
               logo {
                 alt
-                localFile {
-                  childImageSharp {
-                    fluid(
-                      maxWidth: 200
-                      quality: 85
-                      srcSetBreakpoints: [400]
-                      pngCompressionSpeed: 10
-                    ) {
-                      ...GatsbyImageSharpFluid_noBase64
-                    }
-                  }
+                fluid(maxWidth: 200) {
+                  ...GatsbyPrismicImageFluid
                 }
               }
             }
