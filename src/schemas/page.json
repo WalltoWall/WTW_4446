@@ -198,7 +198,8 @@
           "judges": [],
           "entry_details": [],
           "event_details": [],
-          "past_years": []
+          "past_years": [],
+          "anchor": []
         },
         "choices": {
           "text": {
@@ -757,6 +758,22 @@
                 }
               }
             }
+          },
+          "anchor": {
+            "type": "Slice",
+            "fieldset": "Anchor",
+            "description": "Sets an anchor point on a page",
+            "icon": "adjust",
+            "display": "list",
+            "non-repeat": {
+              "anchor_id": {
+                "type": "Text",
+                "config": {
+                  "label": "Anchor ID"
+                }
+              }
+            },
+            "repeat": {}
           }
         }
       }
