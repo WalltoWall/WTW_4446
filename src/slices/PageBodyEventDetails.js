@@ -131,9 +131,6 @@ export const fragment = graphql`
                 text
                 html
               }
-              buy_tickets_link {
-                url
-              }
             }
             items {
               detail_name {
