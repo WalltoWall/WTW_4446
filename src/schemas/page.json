@@ -673,13 +673,6 @@
                   "allowTargetBlank": true,
                   "label": "Text"
                 }
-              },
-              "buy_tickets_link": {
-                "type": "Link",
-                "config": {
-                  "label": "Buy Tickets Link",
-                  "placeholder": "Link to purchase tickets"
-                }
               }
             },
             "repeat": {
