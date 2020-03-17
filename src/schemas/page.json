@@ -254,25 +254,21 @@
               "text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, heading1, heading2, strong, em, hyperlink, list-item, o-list-item, o-list-item",
+                  "multi": "paragraph, heading1, heading2, strong, em, hyperlink, list-item, o-list-item",
                   "allowTargetBlank": true,
-                  "label": "Text"
+                  "label": "Text",
+                  "labels": ["button"]
                 }
               }
             },
             "repeat": {
-              "button_text": {
+              "text_column": {
                 "type": "StructuredText",
                 "config": {
-                  "single": "paragraph",
-                  "label": "Button Text"
-                }
-              },
-              "button_link": {
-                "type": "Link",
-                "config": {
+                  "multi": "paragraph, heading1, heading2, strong, em, hyperlink, list-item, o-list-item, o-list-item",
                   "allowTargetBlank": true,
-                  "label": "Button Link"
+                  "label": "Text Column",
+                  "labels": ["button"]
                 }
               }
             }

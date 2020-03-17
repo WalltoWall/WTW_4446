@@ -9,7 +9,7 @@ export const Subheading = props => (
     fontFamily="subheadline"
     fontWeight="subheadline"
     lineHeight="subheadline"
-    fontSizeScale={['s', null, 'm']}
+    fontSizeScale={['b', null, 'm']}
     {...props}
   />
 )
