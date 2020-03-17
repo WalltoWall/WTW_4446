@@ -36,7 +36,7 @@ const theme = {
   fontSizeScales: {
     t: linearScale('12px', '18px', { count }),
     s: linearScale('15px', '24px', { count }),
-    b: linearScale('17px', '27px', { count }),
+    b: linearScale('17px', '32px', { count }),
     m: linearScale('21px', '36px', { count }),
     l: linearScale('26px', '60px', { count }),
     xl: linearScale('31px', '80px', { count }),

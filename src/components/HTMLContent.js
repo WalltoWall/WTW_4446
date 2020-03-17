@@ -4,8 +4,12 @@ import HTMLRenderer from 'react-html-renderer'
 import { Box, Text } from 'system'
 import { Heading, Subheading, Anchor } from 'src/components'
 
-const baseHeadingProps = { boxStyle: 'firstLastNoMargin', myScale: 'm' }
-const baseTextProps = { boxStyle: 'lastNoMargin', mbScale: 's' }
+const baseHeadingProps = {
+  boxStyle: 'firstLastNoMargin',
+  mtScale: 'm',
+  mbScale: 's',
+}
+const baseTextProps = { boxStyle: 'lastNoMargin', mbScale: 't' }
 
 const defaultComponents = {
   h1: props => <Heading as="h3" {...baseHeadingProps} {...props} />,

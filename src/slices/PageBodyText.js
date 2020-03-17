@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
-import { getRichText, propPairsEq } from 'helpers'
+import { getRichText, propPairsEq, notEmpty } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
@@ -9,8 +9,8 @@ import {
   BoundedBox,
   HTMLContent,
   StandardGrid,
-  Button,
   Subheading,
+  Button,
 } from 'src/components'
 
 export const PageBodyText = ({
@@ -22,7 +22,7 @@ export const PageBodyText = ({
   buttonColor = 'white',
   textColor = 'inherit',
   textHTML,
-  buttons,
+  textColumnHTMLs = [],
   ...props
 }) => {
   const theme = useMemo(
@@ -65,18 +65,38 @@ export const PageBodyText = ({
                   {...props}
                 />
               ),
+              a: () => props => (
+                <Button as={Link} mrScale="s" mbScale="s" {...props} />
+              ),
             }}
           />
-          {buttons && (
-            <Grid
-              justifyContent="start"
-              gridGapScale="s"
-              gridRow={[null, null, 2]}
-            >
-              {buttons}
-            </Grid>
-          )}
         </StandardGrid>
+        {notEmpty(textColumnHTMLs) && (
+          <StandardGrid mtScale={['m', 'xl']}>
+            {textColumnHTMLs.map((textColumnHTML, i) => (
+              <HTMLContent
+                key={i}
+                gridColumn={['1 / -1', null, 'span 5']}
+                fontSizeScale="s"
+                html={textColumnHTML}
+                componentOverrides={{
+                  h2: () => props => (
+                    <Subheading
+                      as="h4"
+                      boxStyle="firstLastNoMargin"
+                      mtScale="m"
+                      mbScale="s"
+                      {...props}
+                    />
+                  ),
+                  a: () => props => (
+                    <Button as={Link} mrScale="s" mbScale="s" {...props} />
+                  ),
+                }}
+              />
+            ))}
+          </StandardGrid>
+        )}
       </BoundedBox>
     </ThemeProvider>
   )
@@ -92,17 +112,9 @@ PageBodyText.mapDataToProps = ({ data, context, nextContext }) => ({
   buttonBackgroundColor: data?.primary?.button_background_color,
   buttonColor: data?.primary?.button_text_color,
   textHTML: getRichText(data?.primary?.text),
-  buttons: data?.items
-    ?.filter?.(item => item?.button_link?.url)
-    ?.map?.(item => (
-      <Button
-        as={Link}
-        href={item?.button_link?.url}
-        target={item?.button_link?.target}
-      >
-        {item?.button_text?.text}
-      </Button>
-    )),
+  textColumnHTMLs: data?.items
+    ?.filter(item => item?.text_column?.text)
+    ?.map?.(item => getRichText(item.text_column)),
 })
 
 PageBodyText.mapDataToContext = ({ data }) => ({
@@ -130,12 +142,9 @@ export const fragment = graphql`
               }
             }
             items {
-              button_text {
+              text_column {
                 text
-              }
-              button_link {
-                url
-                target
+                html
               }
             }
           }
