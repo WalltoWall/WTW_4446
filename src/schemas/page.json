@@ -251,13 +251,21 @@
                   "label": "Button Text Color"
                 }
               },
+              "display_links_as_buttons": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Links",
+                  "placeholder_true": "Buttons",
+                  "default_value": false,
+                  "label": "Display Links as Buttons"
+                }
+              },
               "text": {
                 "type": "StructuredText",
                 "config": {
                   "multi": "paragraph, heading1, heading2, strong, em, hyperlink, list-item, o-list-item",
                   "allowTargetBlank": true,
-                  "label": "Text",
-                  "labels": ["button"]
+                  "label": "Text"
                 }
               }
             },
@@ -267,8 +275,7 @@
                 "config": {
                   "multi": "paragraph, heading1, heading2, strong, em, hyperlink, list-item, o-list-item, o-list-item",
                   "allowTargetBlank": true,
-                  "label": "Text Column",
-                  "labels": ["button"]
+                  "label": "Text Column"
                 }
               }
             }
