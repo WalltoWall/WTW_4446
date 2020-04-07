@@ -42,7 +42,7 @@
     "gatsby-plugin-sitemap": "^2.2.27",
     "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-plugin-svgr": "^2.0.2",
-    "gatsby-source-prismic": "3.0.0-beta.18",
+    "gatsby-source-prismic": "^3.0.1",
     "lodash": "^4.17.15",
     "minireset.css": "^0.0.6",
     "react": "^16.12.0",

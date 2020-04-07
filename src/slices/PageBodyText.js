@@ -23,6 +23,7 @@ export const PageBodyText = ({
   textColor = 'inherit',
   textHTML,
   textColumnHTMLs = [],
+  displayLinksAsButtons = false,
   ...props
 }) => {
   const theme = useMemo(
@@ -89,9 +90,13 @@ export const PageBodyText = ({
                       {...props}
                     />
                   ),
-                  a: () => props => (
-                    <Button as={Link} mrScale="s" mbScale="s" {...props} />
-                  ),
+                  a: Comp => props => {
+                    const FinalComp = displayLinksAsButtons
+                      ? props => <Button as={Link} {...props} />
+                      : Comp
+
+                    return <FinalComp mrScale="s" mbScale="s" {...props} />
+                  },
                 }}
               />
             ))}
@@ -115,6 +120,7 @@ PageBodyText.mapDataToProps = ({ data, context, nextContext }) => ({
   textColumnHTMLs: data?.items
     ?.filter(item => item?.text_column?.text)
     ?.map?.(item => getRichText(item.text_column)),
+  displayLinksAsButtons: data?.primary?.display_links_as_buttons,
 })
 
 PageBodyText.mapDataToContext = ({ data }) => ({
@@ -136,6 +142,7 @@ export const fragment = graphql`
               link_color
               button_background_color
               button_text_color
+              display_links_as_buttons
               text {
                 text
                 html
