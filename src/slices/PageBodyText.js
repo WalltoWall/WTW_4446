@@ -95,7 +95,7 @@ export const PageBodyText = ({
                       ? props => <Button as={Link} {...props} />
                       : Comp
 
-                    return <FinalComp mrScale="s" mbScale="s" {...props} />
+                    return <FinalComp mbScale="s" {...props} />
                   },
                 }}
               />
