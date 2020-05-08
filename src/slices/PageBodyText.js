@@ -4,7 +4,7 @@ import { getRichText, propPairsEq, notEmpty } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
-import { Grid, Link, ThemeProvider } from 'system'
+import { Link, ThemeProvider } from 'system'
 import {
   BoundedBox,
   HTMLContent,
