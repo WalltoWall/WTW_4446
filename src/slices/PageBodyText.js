@@ -66,9 +66,13 @@ export const PageBodyText = ({
                   {...props}
                 />
               ),
-              a: () => props => (
-                <Button as={Link} mrScale="s" mbScale="s" {...props} />
-              ),
+              a: Comp => props => {
+                const FinalComp = displayLinksAsButtons
+                  ? props => <Button as={Link} {...props} />
+                  : Comp
+
+                return <FinalComp mbScale="s" {...props} />
+              },
             }}
           />
         </StandardGrid>
