@@ -81,6 +81,7 @@ export const query = graphql`
   query($uid: String!) {
     prismicPage(uid: { eq: $uid }) {
       ...PrismicPageParentRecursive
+      _previewable
       uid
       data {
         title {
