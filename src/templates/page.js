@@ -1,13 +1,17 @@
 import React, { useMemo } from 'react'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
-import { GenericTemplate } from 'gatsby-theme-ww-prismic'
+import MapSlicesToComponents from '@walltowall/react-map-slices-to-components'
 
-import { ThemeProvider, Text } from 'system'
+import { ThemeProvider, Box, Text } from 'system'
 
+import { useSettingsData } from 'src/hooks/useSettingsData'
 import { slicesMap } from 'src/slices/PageBody'
+import { SkipNavLink } from '../components/SkipNavLink'
 
-export const PageTemplate = ({ data, ...props }) => {
+export const PageTemplate = ({ data, location, ...props }) => {
+  console.log('test')
+
   const page = data.prismicPage
   const fontsTheme = useMemo(
     () => ({
@@ -30,9 +34,23 @@ export const PageTemplate = ({ data, ...props }) => {
     [page],
   )
 
+  const settings = useSettingsData()
+  const siteName = settings?.site_name?.text
+  const siteDescription = settings?.site_description?.text
+
+  const meta = useMemo(
+    () => ({
+      rootData: data,
+      page: data?.prismicPage,
+      location: location,
+    }),
+    [data, location],
+  )
+
   return (
     <>
-      <Helmet>
+      <Helmet titleTemplate={`%s – ${siteName}`} defaultTitle={siteName}>
+        <meta name="description" content={siteDescription} />
         {data.prismicPage.data.webfont_css.map(
           webfont =>
             webfont.url && (
@@ -42,13 +60,15 @@ export const PageTemplate = ({ data, ...props }) => {
       </Helmet>
       <ThemeProvider theme={fontsTheme}>
         <Text fontFamily="body" lineHeight="body" fontWeight="body">
-          <GenericTemplate
-            customType="page"
-            sliceZoneId="body"
-            slicesMap={slicesMap}
-            data={data}
-            {...props}
-          />
+          <SkipNavLink />
+          {/* process.env.NODE_ENV === 'development' && <DevRefreshButton /> */}
+          <Box as="main" position="relative" {...props}>
+            <MapSlicesToComponents
+              list={page?.data?.body}
+              map={slicesMap}
+              meta={meta}
+            />
+          </Box>
         </Text>
       </ThemeProvider>
     </>

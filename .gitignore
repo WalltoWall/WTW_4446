@@ -2,6 +2,7 @@ node_modules/
 *.log
 .cache/
 public/
+shell.nix
 
 # Local Netlify folder
 .netlify
