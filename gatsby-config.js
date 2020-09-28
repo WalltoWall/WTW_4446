@@ -18,6 +18,7 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-svgr',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-styled-components',
     process.env.GOOGLE_TAGMANAGER_ID && {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
