@@ -46,6 +46,7 @@ module.exports = {
         linkResolver: require('./src/linkResolver').linkResolver,
         fetchLinks: ['page.parent'],
         prismicToolbar: 'legacy',
+        releaseID: 'X3JpeBEAACEAT2Jv'
       },
     },
     {
