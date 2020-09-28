@@ -8,32 +8,64 @@ const SITE_DESCRIPTION =
   'The Pele Awards is one of 15 District Competitions for the American Advertising Awards recognizing the best advertising and creative design work in Hawai‘i.'
 const SITE_URL = 'https://peleawards.com'
 
-// Load Primsic custom type schemas.
-const schemas = require('./src/schemas')
+const siteMetadata = {
+  title: 'Pele Awards',
+  titleShort: 'Peles',
+  description:
+    'The Pele Awards is one of 15 District Competitions for the American Advertising Awards recognizing the best advertising and creative design work in Hawai‘i.',
+  siteUrl: 'https://hawaiinational.bank',
+}
 
 module.exports = {
+  siteMetadata,
   plugins: [
-    {
-      resolve: '@walltowall/gatsby-theme-ww-base',
+    'gatsby-plugin-react-helmet-async',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-svgr',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-treat',
+    process.env.GOOGLE_TAGMANAGER_ID && {
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        root: __dirname,
-        siteTitle: SITE_TITLE,
-        siteTitleShort: SITE_TITLE_SHORT,
-        siteDescription: SITE_DESCRIPTION,
-        siteUrl: SITE_URL,
-        withNetlify: true,
-        withAxe: false,
+        id: process.env.GOOGLE_TAGMANAGER_ID,
       },
     },
     {
-      resolve: '@walltowall/gatsby-theme-ww-prismic',
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        root: __dirname,
+        name: siteMetadata.title,
+        short_name: siteMetadata.titleShort,
+        start_url: '/',
+        background_color: '#000000',
+        theme_color: '#ffffff',
+        display: 'minimal-ui',
+        icon: path.resolve(__dirname, 'src/assets/manifest-icon.png'),
+      },
+    },
+    {
+      resolve: 'gatsby-source-prismic',
+      options: {
         repositoryName: process.env.GATSBY_PRISMIC_REPOSITORY_NAME,
         accessToken: process.env.GATSBY_PRISMIC_ACCESS_TOKEN,
-        schemas,
-        defaultTemplate: 'page',
+        schemas: require('./src/schemas'),
         linkResolver: require('./src/linkResolver').linkResolver,
+        fetchLinks: ['page.parent'],
+        prismicToolbar: 'legacy',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        headers: {
+          '/*': [
+            'X-Frame-Options: SAMEORIGIN',
+            'X-XSS-Protection: 1; mode=block',
+            'X-Content-Type-Options: nosniff',
+            'Referrer-Policy: strict-origin',
+            'Access-Control-Allow-Origin: *',
+          ],
+        },
+        mergeSecurityHeaders: false,
       },
     },
     {
@@ -46,5 +78,5 @@ module.exports = {
         'gatsby-theme-ww-prismic': '@walltowall/gatsby-theme-ww-prismic',
       },
     },
-  ],
+  ].filter(Boolean),
 }
