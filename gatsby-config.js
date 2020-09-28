@@ -33,6 +33,7 @@ module.exports = {
         accessToken: process.env.GATSBY_PRISMIC_ACCESS_TOKEN,
         schemas,
         defaultTemplate: 'page',
+        linkResolver: require('./src/linkResolver').linkResolver,
       },
     },
     {
