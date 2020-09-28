@@ -15,7 +15,7 @@ export const PageBodyJudges = ({
   judgeHeadlineColor = 'inherit',
   judgeBackgroundColor = 'inherit',
   buttonBackgroundColor = 'black',
-  buttonColor = 'white',
+  buttonTextColor = 'white',
   textColor = 'inherit',
   headline,
   children,
@@ -26,7 +26,7 @@ export const PageBodyJudges = ({
       colors: {
         background: safeHexToP3(backgroundColor),
         body: safeHexToP3(textColor),
-        button: safeHexToP3(buttonColor),
+        button: safeHexToP3(buttonTextColor),
         buttonBackground: safeHexToP3(buttonBackgroundColor),
         headline: safeHexToP3(headlineColor),
         link: safeHexToP3(linkColor),
@@ -36,7 +36,7 @@ export const PageBodyJudges = ({
     [
       backgroundColor,
       textColor,
-      buttonColor,
+      buttonTextColor,
       buttonBackgroundColor,
       headlineColor,
       linkColor,
@@ -48,7 +48,7 @@ export const PageBodyJudges = ({
       colors: {
         background: safeHexToP3(judgeBackgroundColor),
         body: safeHexToP3(textColor),
-        button: safeHexToP3(buttonColor),
+        button: safeHexToP3(buttonTextColor),
         buttonBackground: safeHexToP3(buttonBackgroundColor),
         headline: safeHexToP3(judgeHeadlineColor),
         link: safeHexToP3(linkColor),
@@ -57,7 +57,7 @@ export const PageBodyJudges = ({
     }),
     [
       buttonBackgroundColor,
-      buttonColor,
+      buttonTextColor,
       headlineColor,
       judgeBackgroundColor,
       judgeHeadlineColor,
@@ -71,7 +71,7 @@ export const PageBodyJudges = ({
       <BoundedBox as="section" id="judges" bg="background" {...props}>
         <StandardGrid>
           {headline && (
-            <Heading gridColumn="1 / -1" textAlign="center" color="body">
+            <Heading gridColumn="1 / -1" textAlign="center">
               {headline}
             </Heading>
           )}
