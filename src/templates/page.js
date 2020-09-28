@@ -1,17 +1,17 @@
 import React, { useMemo } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { graphql } from 'gatsby'
 import MapSlicesToComponents from '@walltowall/react-map-slices-to-components'
+import { withPreview } from 'gatsby-source-prismic'
 
 import { ThemeProvider, Box, Text } from 'system'
 
 import { useSettingsData } from 'src/hooks/useSettingsData'
 import { slicesMap } from 'src/slices/PageBody'
 import { SkipNavLink } from '../components/SkipNavLink'
+import { linkResolver } from '../linkResolver'
 
 export const PageTemplate = ({ data, location, ...props }) => {
-  console.log('test')
-
   const page = data.prismicPage
   const fontsTheme = useMemo(
     () => ({
@@ -75,12 +75,12 @@ export const PageTemplate = ({ data, location, ...props }) => {
   )
 }
 
-export default PageTemplate
+export default withPreview(PageTemplate, { linkResolver })
 
 export const query = graphql`
   query($uid: String!) {
     prismicPage(uid: { eq: $uid }) {
-      ...PageParentRecursive
+      ...PrismicPageParentRecursive
       uid
       data {
         title {

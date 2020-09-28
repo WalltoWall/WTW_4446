@@ -1,19 +1,14 @@
+const path = require('path')
+
 // Load .env file.
 require('dotenv').config()
-
-// Configure the following constants for the project.
-const SITE_TITLE = 'Pele Awards'
-const SITE_TITLE_SHORT = 'Peles'
-const SITE_DESCRIPTION =
-  'The Pele Awards is one of 15 District Competitions for the American Advertising Awards recognizing the best advertising and creative design work in Hawai‘i.'
-const SITE_URL = 'https://peleawards.com'
 
 const siteMetadata = {
   title: 'Pele Awards',
   titleShort: 'Peles',
   description:
     'The Pele Awards is one of 15 District Competitions for the American Advertising Awards recognizing the best advertising and creative design work in Hawai‘i.',
-  siteUrl: 'https://hawaiinational.bank',
+  siteUrl: 'https://peleawards.com',
 }
 
 module.exports = {
@@ -23,7 +18,6 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-svgr',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-treat',
     process.env.GOOGLE_TAGMANAGER_ID && {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
@@ -76,6 +70,7 @@ module.exports = {
         reference: '@walltowall/gatsby-theme-ww-reference',
         hooks: '@walltowall/hooks',
         'gatsby-theme-ww-prismic': '@walltowall/gatsby-theme-ww-prismic',
+        'src': path.resolve(__dirname, 'src')
       },
     },
   ].filter(Boolean),
