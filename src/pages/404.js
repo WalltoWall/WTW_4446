@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import MapSlicesToComponents from '@walltowall/react-map-slices-to-components'
 
 import { useSettingsData } from 'src/hooks/useSettingsData'
