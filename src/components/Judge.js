@@ -1,20 +1,12 @@
 import React, { useState } from 'react'
-import { linearScale } from 'styled-system-scale'
+import { linearScale, negateScale } from 'styled-system-scale'
 import Expand from 'react-expand-animated'
 
-import {
-  Box,
-  Grid,
-  Flex,
-  Text,
-  ImageContainer,
-  Image,
-  AspectRatio,
-  SVG,
-} from 'system'
+import { Box, Grid, Flex, Text, Image, SVG } from 'system'
 import { Heading, Subheading, ButtonCircle, HTMLContent } from 'src/components'
 import { ReactComponent as AssetIconPlusSVG } from 'src/assets/icon-plus.svg'
 import { ReactComponent as AssetIconMinusSVG } from 'src/assets/icon-minus.svg'
+import { theme } from '../theme'
 
 const toggleButtonSVGs = {
   plus: { svg: AssetIconPlusSVG, x: 1, y: 1 },
@@ -43,10 +35,10 @@ export const Judge = ({
       bg="background"
       gridAutoFlow="dense"
       gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
-      alignItems="start"
-      pScale="l"
-      gridRowGapScale="l"
+      alignItems="center"
       gridColumnGapScale="l"
+      gridRowGapScale={['l', 0]}
+      pxScale="l"
       {...props}
     >
       <Image
@@ -54,15 +46,21 @@ export const Judge = ({
         src={imageURL}
         alt={imageAlt}
         objectFit="contain"
+        width="75%"
         height="auto"
         gridColumn={['auto', imageIsOnLeft ? 1 : 2]}
+        justifySelf={[null, imageIsOnLeft ? 'end' : 'start']}
       />
-      <Box
+
+      <Text
+        display={[null, 'flex']}
+        flexDirection={[null, 'column']}
         alignSelf="center"
         gridColumn={['auto', imageIsOnLeft ? 2 : 1]}
-        maxWidth="45ch"
         justifySelf={[null, imageIsOnLeft ? 'start' : 'end']}
-        pyScale={[0, 'xl']}
+        textAlign={[null, imageIsOnLeft ? 'left' : 'right']}
+        maxWidth={[null, '75%']}
+        pyScale={[0, 's']}
       >
         {name && (
           <Heading fontSizeScale="xl" mbScale="t-">
@@ -80,36 +78,48 @@ export const Judge = ({
           </Subheading>
         )}
         {bioHTML && (
-          <Box mtScale="s">
-            <Flex alignItems="center">
-              <ButtonCircle
-                height={linearScale('30px', '70px', { count: 5 })}
-                width={linearScale('30px', '70px', { count: 5 })}
-                mrScale="t"
-                onClick={toggleBioIsOpen}
-              >
-                <SVG
-                  svg={svg.svg}
-                  x={svg.x}
-                  y={svg.y}
-                  width={linearScale('12px', '30px', { count: 5 })}
-                />
-              </ButtonCircle>
-              <Subheading as="span" fontSizeScale="m" textStyle="caps" color="buttonBackground">
-                Bio
-              </Subheading>
-            </Flex>
-            <Expand open={bioIsOpen}>
-              <HTMLContent
-                html={bioHTML}
-                fontSizeScale="s"
-                maxWidth="60ch"
-                mtScale="t"
+          <Flex
+            alignItems="center"
+            mtScale="s"
+            ml={[null, imageIsOnLeft ? null : 'auto']}
+          >
+            <ButtonCircle
+              height={linearScale('30px', '70px', { count: 5 })}
+              width={linearScale('30px', '70px', { count: 5 })}
+              mrScale="t"
+              onClick={toggleBioIsOpen}
+            >
+              <SVG
+                svg={svg.svg}
+                x={svg.x}
+                y={svg.y}
+                width={linearScale('12px', '30px', { count: 5 })}
               />
-            </Expand>
-          </Box>
+            </ButtonCircle>
+            <Subheading
+              as="span"
+              fontSizeScale="m"
+              textStyle="caps"
+              color="buttonBackground"
+            >
+              Bio
+            </Subheading>
+          </Flex>
         )}
-      </Box>
+      </Text>
+
+      {bioHTML && (
+        <Box gridColumn="1 / -1" maxWidth={['45ch', '50ch']} mx={[0, 'auto']}>
+          <Expand open={bioIsOpen}>
+            <HTMLContent
+              html={bioHTML}
+              fontSizeScale="s"
+              pbScale="l"
+              ptScale={[0, 'l']}
+            />
+          </Expand>
+        </Box>
+      )}
     </Grid>
   )
 }

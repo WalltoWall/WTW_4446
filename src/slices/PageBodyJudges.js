@@ -77,7 +77,7 @@ export const PageBodyJudges = ({
           )}
           <Grid
             gridColumn={['1 / -1', null, null, '2 / span 10']}
-            gridGapScale="m"
+            gridGapScale="xl"
           >
             <ThemeProvider theme={judgeTheme}>{children}</ThemeProvider>
           </Grid>
