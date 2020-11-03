@@ -69,7 +69,7 @@ export const PageBodyHeader = ({
           pyScale="s"
           position="relative"
           zIndex="headerBar"
-          pxScale="l"
+          pxScale={['l', null, 'xl']}
           {...props}
         >
           <Grid
