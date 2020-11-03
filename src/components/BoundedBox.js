@@ -7,6 +7,7 @@ export const BoundedBox = ({ nextSharesBg = [false], ...props }) => (
     pxScale={['l', null, 'xl', null, 'xxl']}
     ptScale="xxl"
     pbScale={nextSharesBg?.map?.(cond => (cond ? 0 : 'xxl'))}
+    maxWidth="l"
     {...props}
   />
 )
