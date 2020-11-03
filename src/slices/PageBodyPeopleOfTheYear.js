@@ -6,18 +6,21 @@ import { notEmpty, getRichText } from 'helpers'
 import { safeHexToP3 } from 'src/helpers'
 
 import { ThemeProvider, Grid } from 'system'
-import { BoundedBox, StandardGrid, Heading, Judge } from 'src/components'
+import { BoundedBox, StandardGrid, Heading, HTMLContent } from 'src/components'
+import { PersonOfTheYear } from '../components/PersonOfTheYear'
 
-export const PageBodyJudges = ({
+export const PageBodyPeopleOfTheYear = ({
   backgroundColor = 'white',
-  linkColor = 'inherit',
   headlineColor = 'inherit',
-  judgeHeadlineColor = 'inherit',
-  judgeBackgroundColor = 'inherit',
+  introCopyColor = 'inherit',
+  potyHeadlineColor = 'inherit',
+  potyBackgroundColor = 'inherit',
+  textColor = 'inherit',
+  linkColor = 'inherit',
   buttonBackgroundColor = 'black',
   buttonTextColor = 'white',
-  textColor = 'inherit',
   headline,
+  introCopy,
   children,
   ...props
 }) => {
@@ -29,6 +32,7 @@ export const PageBodyJudges = ({
         button: safeHexToP3(buttonTextColor),
         buttonBackground: safeHexToP3(buttonBackgroundColor),
         headline: safeHexToP3(headlineColor),
+        intro: safeHexToP3(introCopyColor),
         link: safeHexToP3(linkColor),
         subheadline: safeHexToP3(headlineColor),
       },
@@ -36,6 +40,7 @@ export const PageBodyJudges = ({
     [
       backgroundColor,
       textColor,
+      introCopyColor,
       buttonTextColor,
       buttonBackgroundColor,
       headlineColor,
@@ -43,14 +48,14 @@ export const PageBodyJudges = ({
     ],
   )
 
-  const judgeTheme = useMemo(
+  const potyTheme = useMemo(
     () => ({
       colors: {
-        background: safeHexToP3(judgeBackgroundColor),
+        background: safeHexToP3(potyBackgroundColor),
         body: safeHexToP3(textColor),
         button: safeHexToP3(buttonTextColor),
         buttonBackground: safeHexToP3(buttonBackgroundColor),
-        headline: safeHexToP3(judgeHeadlineColor),
+        headline: safeHexToP3(potyHeadlineColor),
         link: safeHexToP3(linkColor),
         subheadline: safeHexToP3(headlineColor),
       },
@@ -59,8 +64,8 @@ export const PageBodyJudges = ({
       buttonBackgroundColor,
       buttonTextColor,
       headlineColor,
-      judgeBackgroundColor,
-      judgeHeadlineColor,
+      potyHeadlineColor,
+      potyBackgroundColor,
       linkColor,
       textColor,
     ],
@@ -71,12 +76,23 @@ export const PageBodyJudges = ({
       <BoundedBox as="section" id="judges" bg="background" {...props}>
         <StandardGrid>
           {headline && (
-            <Heading gridColumn="1 / -1" textAlign="center">
+            <Heading gridColumn="1 / -1" textAlign="center" color="headline">
               {headline}
             </Heading>
           )}
+          {introCopy && (
+            <HTMLContent
+              color="intro"
+              html={introCopy}
+              gridColumn="1 / -1"
+              textAlign="center"
+              mbScale="m"
+              maxWidth="60ch"
+              mx="auto"
+            />
+          )}
           <Grid gridColumn="1 / -1" gridGapScale="xl">
-            <ThemeProvider theme={judgeTheme}>{children}</ThemeProvider>
+            <ThemeProvider theme={potyTheme}>{children}</ThemeProvider>
           </Grid>
         </StandardGrid>
       </BoundedBox>
@@ -84,25 +100,28 @@ export const PageBodyJudges = ({
   )
 }
 
-PageBodyJudges.Judge = Judge
+PageBodyPeopleOfTheYear.Person = PersonOfTheYear
 
-PageBodyJudges.mapDataToProps = ({ data }) => ({
+PageBodyPeopleOfTheYear.mapDataToProps = ({ data }) => ({
   backgroundColor: data?.primary?.background_color,
   headlineColor: data?.primary?.headline_color,
-  judgeHeadlineColor: data?.primary?.judge_headline_color,
-  judgeBackgroundColor: data?.primary?.judge_background_color,
+  introCopyColor: data?.primary?.intro_copy_color,
+  potyHeadlineColor: data?.primary?.poty_headline_color,
+  potyBackgroundColor: data?.primary?.poty_background_color,
   textColor: data?.primary?.text_color,
   linkColor: data?.primary?.link_color,
   buttonBackgroundColor: data?.primary?.button_background_color,
   buttonTextColor: data?.primary?.button_text_color,
   headline: data?.primary?.headline?.text,
-  children: data?.items?.map(item => (
-    <PageBodyJudges.Judge
+  introCopy: getRichText(data?.primary?.intro_copy),
+  children: data?.items?.map((item, idx) => (
+    <PageBodyPeopleOfTheYear.Person
+      key={idx}
       imageSide={notEmpty(camelCase(item?.image_side))}
+      award={item?.award?.text}
       name={item?.name?.text}
-      jobTitle={item?.job_title?.text}
       location={item?.location?.text}
-      bioHTML={getRichText(item?.bio)}
+      textHTML={getRichText(item?.text)}
       imageFluid={item?.image?.fluid}
       imageURL={item?.image?.url}
       imageAlt={item?.image?.alt}
@@ -111,17 +130,18 @@ PageBodyJudges.mapDataToProps = ({ data }) => ({
 })
 
 export const fragment = graphql`
-  fragment PageBodyJudges on Query {
+  fragment PageBodyPeopleOfTheYear on Query {
     prismicPage(uid: { eq: $uid }) {
       data {
         body {
-          ... on PrismicPageBodyJudges {
+          ... on PrismicPageBodyPeopleOfTheYear {
             id
             primary {
               background_color
               headline_color
-              judge_headline_color
-              judge_background_color
+              intro_copy_color
+              poty_headline_color
+              poty_background_color
               text_color
               link_color
               button_background_color
@@ -129,19 +149,23 @@ export const fragment = graphql`
               headline {
                 text
               }
+              intro_copy {
+                text
+                html
+              }
             }
             items {
               image_side
-              name {
+              award {
                 text
               }
-              job_title {
+              name {
                 text
               }
               location {
                 text
               }
-              bio {
+              text {
                 text
                 html
               }

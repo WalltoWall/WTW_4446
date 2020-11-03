@@ -199,7 +199,8 @@
           "entry_details": [],
           "event_details": [],
           "past_years": [],
-          "anchor": []
+          "anchor": [],
+          "person_of_the_year": []
         },
         "choices": {
           "text": {
@@ -510,6 +511,147 @@
                   "allowTargetBlank": true,
                   "label": "Bio",
                   "placeholder": "280 characters or less about the judge"
+                }
+              }
+            }
+          },
+          "people_of_the_year": {
+            "type": "Slice",
+            "fieldset": "People of the Year",
+            "description": "List of award receipients for PotY",
+            "icon": "people",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "headline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Headline Color"
+                }
+              },
+              "intro_copy_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Intro Copy Color"
+                }
+              },
+              "poty_headline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "PotY Headline Color"
+                }
+              },
+              "poty_background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "PotY Background Color"
+                }
+              },
+              "text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Text Color"
+                }
+              },
+              "link_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Link Color"
+                }
+              },
+              "button_background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Background Color"
+                }
+              },
+              "button_text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Button Text Color"
+                }
+              },
+              "headline": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Headline"
+                }
+              },
+              "intro_copy": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Intro Copy"
+                }
+              }
+            },
+            "repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 1000
+                  },
+                  "thumbnails": [
+                    {
+                      "name": "Tablet",
+                      "width": 768,
+                      "height": null
+                    },
+                    {
+                      "name": "Mobile",
+                      "width": 375,
+                      "height": null
+                    }
+                  ],
+                  "label": "Image"
+                }
+              },
+              "image_side": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Image Side"
+                }
+              },
+              "award": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Award"
+                }
+              },
+              "name": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Name",
+                  "placeholder": "Awardee's name"
+                }
+              },
+              "location": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Location",
+                  "placeholder": "Awardee's title & place of work"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Text",
+                  "placeholder": "280 characters or less about the awardee"
                 }
               }
             }

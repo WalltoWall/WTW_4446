@@ -12,12 +12,12 @@ const toggleButtonSVGs = {
   minus: { svg: AssetIconMinusSVG, x: 20, y: 8 },
 }
 
-export const Judge = ({
+export const PersonOfTheYear = ({
   imageSide = 'left',
+  award,
   name,
-  jobTitle,
   location,
-  bioHTML,
+  textHTML,
   imageFluid,
   imageURL,
   imageAlt,
@@ -61,22 +61,22 @@ export const Judge = ({
         maxWidth={[null, '75%']}
         pyScale={[0, 'l', 's']}
       >
+        {award && (
+          <Subheading as="p" mbScale="t-" color="body">
+            {award}
+          </Subheading>
+        )}
         {name && (
-          <Heading fontSizeScale="xl" mbScale="t-">
+          <Heading fontSizeScale="xl" mbScale="t-" color="headline">
             {name}
           </Heading>
         )}
-        {jobTitle && (
-          <Text as="p" mbScale="t-">
-            {jobTitle}
+        {location && (
+          <Text as="p" color="body" mbScale="t-">
+            {location}
           </Text>
         )}
-        {location && (
-          <Subheading as="p" color="body" mbScale="t-">
-            {location}
-          </Subheading>
-        )}
-        {bioHTML && (
+        {textHTML && (
           <Flex
             alignItems="center"
             mtScale="s"
@@ -107,11 +107,11 @@ export const Judge = ({
         )}
       </Text>
 
-      {bioHTML && (
+      {textHTML && (
         <Box gridColumn="1 / -1" maxWidth={['45ch', '50ch']} mx={[0, 'auto']}>
           <Expand open={bioIsOpen}>
             <HTMLContent
-              html={bioHTML}
+              html={textHTML}
               fontSizeScale="s"
               pbScale="l"
               ptScale={[0, 'l']}
