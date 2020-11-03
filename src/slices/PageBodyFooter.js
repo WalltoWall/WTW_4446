@@ -45,6 +45,7 @@ export const PageBodyFooter = ({
         left={0}
         zIndex="header"
         maxWidth="none"
+        pxScale="l"
         {...props}
       >
         <Grid
