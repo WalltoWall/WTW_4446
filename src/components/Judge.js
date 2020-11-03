@@ -59,7 +59,7 @@ export const Judge = ({
         justifySelf={[null, imageIsOnLeft ? 'start' : 'end']}
         textAlign={[null, imageIsOnLeft ? 'left' : 'right']}
         maxWidth={[null, '75%']}
-        pyScale={[0, 's']}
+        pyScale={[0, 'l', 's']}
       >
         {name && (
           <Heading fontSizeScale="xl" mbScale="t-">

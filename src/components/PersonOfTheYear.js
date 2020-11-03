@@ -59,7 +59,7 @@ export const PersonOfTheYear = ({
         justifySelf={[null, imageIsOnLeft ? 'start' : 'end']}
         textAlign={[null, imageIsOnLeft ? 'left' : 'right']}
         maxWidth={[null, '75%']}
-        pyScale={[0, 's']}
+        pyScale={[0, 'l', 's']}
       >
         {award && (
           <Subheading as="p" mbScale="t-" color="body">

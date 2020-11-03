@@ -87,12 +87,11 @@ export const PageBodyPeopleOfTheYear = ({
               gridColumn="1 / -1"
               textAlign="center"
               mbScale="m"
+              maxWidth="60ch"
+              mx="auto"
             />
           )}
-          <Grid
-            gridColumn={['1 / -1', null, null, '2 / span 10']}
-            gridGapScale="xl"
-          >
+          <Grid gridColumn="1 / -1" gridGapScale="xl">
             <ThemeProvider theme={potyTheme}>{children}</ThemeProvider>
           </Grid>
         </StandardGrid>
