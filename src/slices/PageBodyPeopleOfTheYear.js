@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
 import { camelCase } from 'tiny-compose-fns'
-import { notEmpty, getRichText } from 'helpers'
+import { notEmpty, getRichText, propPairsEq } from 'helpers'
 
 import { safeHexToP3 } from 'src/helpers'
 
@@ -102,7 +102,8 @@ export const PageBodyPeopleOfTheYear = ({
 
 PageBodyPeopleOfTheYear.Person = PersonOfTheYear
 
-PageBodyPeopleOfTheYear.mapDataToProps = ({ data }) => ({
+PageBodyPeopleOfTheYear.mapDataToProps = ({ data, context, nextContext }) => ({
+  nextSharesBg: propPairsEq('bg', context, nextContext),
   backgroundColor: data?.primary?.background_color,
   headlineColor: data?.primary?.headline_color,
   introCopyColor: data?.primary?.intro_copy_color,
@@ -127,6 +128,10 @@ PageBodyPeopleOfTheYear.mapDataToProps = ({ data }) => ({
       imageAlt={item?.image?.alt}
     />
   )),
+})
+
+PageBodyPeopleOfTheYear.mapDataToContext = ({ data }) => ({
+  bg: data?.primary?.background_color,
 })
 
 export const fragment = graphql`

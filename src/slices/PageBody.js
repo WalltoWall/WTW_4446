@@ -11,6 +11,7 @@ import { PageBodyJudges } from './PageBodyJudges'
 import { PageBodyPastYears } from './PageBodyPastYears'
 import { PageBodyText } from './PageBodyText'
 import { PageBodyPeopleOfTheYear } from './PageBodyPeopleOfTheYear'
+import { PageBodyVideo } from './PageBodyVideo'
 
 // 2. Add your slice
 export const slicesMap = {
@@ -24,6 +25,7 @@ export const slicesMap = {
   PageBodyPastYears,
   PageBodyText,
   PageBodyPeopleOfTheYear,
+  PageBodyVideo,
 }
 
 // 3. Add your slice fragment
@@ -39,6 +41,7 @@ export const fragment = graphql`
     ...PageBodyPastYears
     ...PageBodyText
     ...PageBodyPeopleOfTheYear
+    ...PageBodyVideo
 
     prismicPage(uid: { eq: $uid }) {
       uid

@@ -200,7 +200,8 @@
           "event_details": [],
           "past_years": [],
           "anchor": [],
-          "person_of_the_year": []
+          "person_of_the_year": [],
+          "video": []
         },
         "choices": {
           "text": {
@@ -908,6 +909,29 @@
                 "type": "Text",
                 "config": {
                   "label": "Anchor ID"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "video": {
+            "type": "Slice",
+            "fieldset": "Video",
+            "description": "Embed a video from YouTube, Vimeo, etc.",
+            "icon": "ondemand_video",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "video_url": {
+                "type": "Embed",
+                "config": {
+                  "label": "Video URL",
+                  "placeholder": "URL to the video (e.g. from YouTube or Vimeo)"
                 }
               }
             },

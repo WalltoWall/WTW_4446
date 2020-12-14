@@ -1,7 +1,7 @@
 import React from 'react'
 import HTMLRenderer from 'react-html-renderer'
 
-import { Box, Text } from 'system'
+import { Box, Text, AspectRatio } from 'system'
 import { Heading, Subheading, Anchor } from 'src/components'
 
 const baseHeadingProps = {
@@ -22,6 +22,18 @@ const defaultComponents = {
   ul: props => <Box as="ul" plScale="m" {...baseTextProps} {...props} />,
   li: props => <Text as="li" listStyle="disc" mbScale="s" {...props} />,
   a: props => <Anchor {...props} />,
+  iframe: props => (
+    <AspectRatio x={props.width} y={props.height}>
+      <Box
+        as="iframe"
+        css={`
+          width: 100% !important;
+          height: 100% !important;
+        `}
+        {...props}
+      />
+    </AspectRatio>
+  ),
 }
 
 export const HTMLContent = ({ html, componentOverrides, ...props }) => (

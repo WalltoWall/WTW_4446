@@ -46,6 +46,7 @@ module.exports = {
         linkResolver: require('./src/linkResolver').linkResolver,
         fetchLinks: ['page.parent'],
         prismicToolbar: 'legacy',
+        releaseID: 'X9fbaREAACIALRlW',
       },
     },
     {
@@ -71,7 +72,7 @@ module.exports = {
         reference: '@walltowall/gatsby-theme-ww-reference',
         hooks: '@walltowall/hooks',
         'gatsby-theme-ww-prismic': '@walltowall/gatsby-theme-ww-prismic',
-        'src': path.resolve(__dirname, 'src')
+        src: path.resolve(__dirname, 'src'),
       },
     },
   ].filter(Boolean),
