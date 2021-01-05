@@ -96,8 +96,9 @@ PageBodyJudges.mapDataToProps = ({ data }) => ({
   buttonBackgroundColor: data?.primary?.button_background_color,
   buttonTextColor: data?.primary?.button_text_color,
   headline: data?.primary?.headline?.text,
-  children: data?.items?.map(item => (
+  children: data?.items?.map((item, idx) => (
     <PageBodyJudges.Judge
+      key={idx}
       imageSide={notEmpty(camelCase(item?.image_side))}
       name={item?.name?.text}
       jobTitle={item?.job_title?.text}

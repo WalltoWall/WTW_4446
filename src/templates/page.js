@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { graphql } from 'gatsby'
 import MapSlicesToComponents from '@walltowall/react-map-slices-to-components'
 import { withPreview } from 'gatsby-source-prismic'
+import { createGlobalStyle } from 'styled-components'
 
 import { ThemeProvider, Box, Text } from 'system'
 
@@ -10,6 +11,12 @@ import { useSettingsData } from 'src/hooks/useSettingsData'
 import { slicesMap } from 'src/slices/PageBody'
 import { SkipNavLink } from '../components/SkipNavLink'
 import { linkResolver } from '../linkResolver'
+
+const GlobalStyles = createGlobalStyle(props => ({
+  html: {
+    fontSize: props.fontSize ?? '16px',
+  },
+}))
 
 export const PageTemplate = ({ data, location, ...props }) => {
   const page = data.prismicPage
@@ -60,6 +67,7 @@ export const PageTemplate = ({ data, location, ...props }) => {
       </Helmet>
       <ThemeProvider theme={fontsTheme}>
         <Text fontFamily="body" lineHeight="body" fontWeight="body">
+          <GlobalStyles fontSize={page?.data?.base_font_size} />
           <SkipNavLink />
           {/* process.env.NODE_ENV === 'development' && <DevRefreshButton /> */}
           <Box as="main" position="relative" {...props}>
@@ -105,6 +113,7 @@ export const query = graphql`
         body_font_family {
           text
         }
+        base_font_size
         body_font_weight
         body_line_height
         body {

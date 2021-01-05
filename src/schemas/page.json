@@ -49,6 +49,13 @@
         "label": "Webfont CSS"
       }
     },
+    "base_font_size": {
+      "type": "Number",
+      "config": {
+        "label": "Base Font Size",
+        "placeholder": "Default: 16 (px)"
+      }
+    },
     "headline_font_family": {
       "type": "StructuredText",
       "config": {
