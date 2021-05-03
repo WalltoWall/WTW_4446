@@ -68,7 +68,7 @@ export const PageBodyJudges = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <BoundedBox as="section" id="judges" bg="background" {...props}>
+      <BoundedBox as="section" bg="background" {...props}>
         <StandardGrid>
           {headline && (
             <Heading gridColumn="1 / -1" textAlign="center">
