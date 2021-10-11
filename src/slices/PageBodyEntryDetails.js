@@ -19,6 +19,7 @@ export const PageBodyEntryDetails = ({
   linkColor = 'inherit',
   headlineColor = 'inherit',
   subheadlineColor = 'inherit',
+  deadlineHeadlineColor = 'inherit',
   buttonBackgroundColor = 'black',
   buttonColor = 'white',
   textColor = 'inherit',
@@ -77,7 +78,7 @@ export const PageBodyEntryDetails = ({
                 <Subheading as="dt" mbScale="t-">
                   {deadline.name}
                 </Subheading>
-                <Heading as="dd" color="body">
+                <Heading as="dd" color="body" color={deadlineHeadlineColor}>
                   {deadline.date}
                 </Heading>
               </Box>
@@ -113,6 +114,7 @@ PageBodyEntryDetails.mapDataToProps = ({ data, context, nextContext }) => ({
   backgroundColor: data?.primary?.background_color,
   headlineColor: data?.primary?.headline_color,
   subheadlineColor: data?.primary?.subheadline_color,
+  deadlineHeadlineColor: data?.primary?.deadline_headline_color,
   textColor: data?.primary?.text_color,
   linkColor: data?.primary?.link_color,
   buttonBackgroundColor: data?.primary?.button_background_color,
@@ -145,6 +147,7 @@ export const fragment = graphql`
               background_color
               headline_color
               subheadline_color
+              deadline_headline_color
               text_color
               link_color
               button_background_color

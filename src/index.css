@@ -1,3 +1,31 @@
+@font-face {
+  font-family: 'Noir Pro';
+  src: url('/fonts/NoirPro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noir Pro';
+  src: url('/fonts/NoirPro-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noir Pro';
+  src: url('/fonts/NoirPro-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noir Pro';
+  src: url('/fonts/NoirPro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,4 +48,8 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   padding: 0;
+}
+
+ul {
+  list-style-type: disc;
 }

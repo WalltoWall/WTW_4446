@@ -17,9 +17,9 @@ export const Button = props => {
       pxScale={['m', null, null, 'l']}
       pyScale="s"
       fontSizeScale={['l', 'm']}
-      lineHeight="subheadline"
-      fontWeight="subheadline"
-      fontFamily="subheadline"
+      lineHeight="button"
+      fontWeight="button"
+      fontFamily="button"
       bg={isFocused ? 'button' : 'buttonBackground'}
       color={isFocused ? 'buttonBackground' : 'button'}
       transitionProperty="background-color, color"

@@ -19,8 +19,11 @@ const defaultComponents = {
   h5: props => <Subheading as="h6" {...baseHeadingProps} {...props} />,
   h6: props => <Subheading as="h6" {...baseHeadingProps} {...props} />,
   p: props => <Text as="p" {...baseTextProps} {...props} />,
+  ol: props => <Box as="ol" plScale="m" {...baseTextProps} {...props} />,
   ul: props => <Box as="ul" plScale="m" {...baseTextProps} {...props} />,
-  li: props => <Text as="li" listStyle="disc" mbScale="s" {...props} />,
+  li: props => (
+    <Text as="li" display="list-item" {...baseTextProps} {...props} />
+  ),
   a: props => <Anchor {...props} />,
   iframe: props => (
     <AspectRatio x={props.width} y={props.height}>

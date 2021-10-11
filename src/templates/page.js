@@ -26,16 +26,19 @@ export const PageTemplate = ({ data, location, ...props }) => {
         headline: page?.data?.headline_font_family?.text ?? 'sans-serif',
         subheadline: page?.data?.subheadline_font_family?.text ?? 'sans-serif',
         body: page?.data?.body_font_family?.text ?? 'sans-serif',
+        button: page?.data?.button_font_family?.text ?? 'sans-serif',
       },
       fontWeights: {
         headline: page?.data?.headline_font_weight ?? 400,
         subheadline: page?.data?.subheadline_font_weight ?? 400,
         body: page?.data?.body_font_weight ?? 400,
+        button: page?.data?.button_font_weight ?? 400,
       },
       lineHeights: {
         headline: page?.data?.headline_line_height ?? 1,
         subheadline: page?.data?.subheadline_line_height ?? 1,
         body: page?.data?.body_line_height ?? 1,
+        button: page?.data?.button_line_height ?? 1,
       },
     }),
     [page],
@@ -110,6 +113,11 @@ export const query = graphql`
         }
         subheadline_font_weight
         subheadline_line_height
+        button_font_family {
+          text
+        }
+        button_font_weight
+        button_line_height
         body_font_family {
           text
         }

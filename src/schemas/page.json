@@ -161,7 +161,8 @@
             "type": "Link",
             "config": {
               "allowTargetBlank": true,
-              "label": "Link"
+              "label": "Link",
+              "select": null
             }
           }
         },
@@ -183,7 +184,8 @@
             "type": "Link",
             "config": {
               "allowTargetBlank": true,
-              "label": "Link"
+              "label": "Link",
+              "select": null
             }
           }
         },
@@ -272,7 +274,7 @@
               "text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, heading1, heading2, strong, em, hyperlink, list-item, o-list-item",
+                  "multi": "paragraph,heading1,heading2,strong,em,hyperlink,list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Text"
                 }
@@ -282,7 +284,7 @@
               "text_column": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, heading1, heading2, strong, em, hyperlink, list-item, o-list-item, o-list-item",
+                  "multi": "paragraph,heading1,heading2,strong,em,hyperlink,list-item,o-list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Text Column"
                 }
@@ -515,7 +517,7 @@
               "bio": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item",
+                  "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Bio",
                   "placeholder": "280 characters or less about the judge"
@@ -594,7 +596,7 @@
               "intro_copy": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, strong, em, hyperlink",
+                  "multi": "paragraph,strong,em,hyperlink",
                   "allowTargetBlank": true,
                   "label": "Intro Copy"
                 }
@@ -656,7 +658,7 @@
               "text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item",
+                  "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Text",
                   "placeholder": "280 characters or less about the awardee"
@@ -689,6 +691,12 @@
                   "label": "Subheadline Color"
                 }
               },
+              "deadline_headline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Deadline Headline Color"
+                }
+              },
               "text_color": {
                 "type": "Color",
                 "config": {
@@ -716,7 +724,7 @@
               "text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, heading1, strong, em, hyperlink, list-item, o-list-item",
+                  "multi": "paragraph,heading1,strong,em,hyperlink,list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Text"
                 }
@@ -725,7 +733,8 @@
                 "type": "Link",
                 "config": {
                   "label": "Entry Booklet Button Link",
-                  "placeholder": "Link to the entry booklet"
+                  "placeholder": "Link to the entry booklet",
+                  "select": null
                 }
               },
               "entry_booklet_button_text": {
@@ -739,7 +748,8 @@
                 "type": "Link",
                 "config": {
                   "label": "Online Entry Button Link",
-                  "placeholder": "Link to the online entry system"
+                  "placeholder": "Link to the online entry system",
+                  "select": null
                 }
               },
               "online_entry_button_text": {
@@ -822,7 +832,7 @@
               "text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, heading1, strong, em, hyperlink, list-item, o-list-item",
+                  "multi": "paragraph,heading1,strong,em,hyperlink,list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Text"
                 }
@@ -840,7 +850,7 @@
               "detail_text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, heading3, strong, em, hyperlink, list-item, o-list-item, o-list-item",
+                  "multi": "paragraph,heading3,strong,em,hyperlink,list-item,o-list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Detail Text",
                   "placeholder": "Text for the detail"
@@ -882,7 +892,7 @@
               "text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, heading1, strong, em, hyperlink",
+                  "multi": "paragraph,heading1,strong,em,hyperlink",
                   "allowTargetBlank": true,
                   "label": "Text"
                 }
@@ -893,7 +903,8 @@
                 "type": "Link",
                 "config": {
                   "allowTargetBlank": true,
-                  "label": "Button Link"
+                  "label": "Button Link",
+                  "select": null
                 }
               },
               "button_text": {
