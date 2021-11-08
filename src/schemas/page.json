@@ -198,20 +198,7 @@
       "type": "Slices",
       "fieldset": "Slice zone",
       "config": {
-        "labels": {
-          "full_width_image": [],
-          "full_viewport_image": [],
-          "header": [],
-          "footer": [],
-          "text": [],
-          "judges": [],
-          "entry_details": [],
-          "event_details": [],
-          "past_years": [],
-          "anchor": [],
-          "person_of_the_year": [],
-          "video": []
-        },
+        "labels": null,
         "choices": {
           "text": {
             "type": "Slice",
@@ -950,6 +937,28 @@
                 "config": {
                   "label": "Video URL",
                   "placeholder": "URL to the video (e.g. from YouTube or Vimeo)"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "full_width_video": {
+            "type": "Slice",
+            "fieldset": "Full Width Video",
+            "description": "Embed a full width video.",
+            "icon": "ondemand_video",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "vimeo_url": {
+                "type": "Text",
+                "config": {
+                  "label": "Vimeo URL"
                 }
               }
             },

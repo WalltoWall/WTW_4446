@@ -15,6 +15,7 @@
   "dependencies": {
     "@reach/skip-nav": "^0.8.0",
     "@svgr/webpack": "^5.1.0",
+    "@vimeo/player": "^2.16.1",
     "@walltowall/helpers": "^5.0.2",
     "@walltowall/hex-to-p3": "^0.2.0",
     "@walltowall/hooks": "^0.8.1",

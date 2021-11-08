@@ -1485,6 +1485,14 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
+"@vimeo/player@^2.16.1":
+  version "2.16.1"
+  resolved "https://registry.yarnpkg.com/@vimeo/player/-/player-2.16.1.tgz#ed2237b8224dd764419b16ec4e6c3ede5bb2224e"
+  integrity sha512-47pUwVFAYBKbmOpxF6CzQc0VwbVi7LCv8i1H44XgRRoMoI7jwAOSi4CDGinjEMoKOKxsn5/p8ze50XZYwgTVWA==
+  dependencies:
+    native-promise-only "0.8.1"
+    weakmap-polyfill "2.0.1"
+
 "@walltowall/helpers@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@walltowall/helpers/-/helpers-5.0.2.tgz#3552fe2c036a18db8950f939982d5b2816f78032"
@@ -7824,6 +7832,11 @@ napi-build-utils@^1.0.1:
   resolved "https://registry.yarnpkg.com/napi-build-utils/-/napi-build-utils-1.0.1.tgz#1381a0f92c39d66bf19852e7873432fc2123e508"
   integrity sha512-boQj1WFgQH3v4clhu3mTNfP+vOBxorDlE8EKiMjUlLG3C4qAESnn9AxIOkFgTR2c9LtzNjPrjS60cT27ZKBhaA==
 
+native-promise-only@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/native-promise-only/-/native-promise-only-0.8.1.tgz#20a318c30cb45f71fe7adfbf7b21c99c1472ef11"
+  integrity sha1-IKMYwwy0X3H+et+/eyHJnBRy7xE=
+
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
@@ -11610,6 +11623,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+weakmap-polyfill@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/weakmap-polyfill/-/weakmap-polyfill-2.0.1.tgz#ff0278c7f75bb0c492fc3343257f3e87114d709a"
+  integrity sha512-Jy177Lvb1LCrPQDWJsXyyqf4eOhcdvQHFGoCqSv921kVF5i42MVbr4e2WEwetuTLBn1NX0IhPzTmMu0N3cURqQ==
 
 webpack-assets-manifest@^3.1.1:
   version "3.1.1"
