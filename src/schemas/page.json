@@ -29,7 +29,9 @@
       "type": "Link",
       "config": {
         "select": "document",
-        "customtypes": ["page"],
+        "customtypes": [
+          "page"
+        ],
         "label": "Parent"
       }
     }
@@ -67,7 +69,16 @@
     "headline_font_weight": {
       "type": "Select",
       "config": {
-        "options": ["200", "300", "400", "500", "600", "700", "800", "900"],
+        "options": [
+          "200",
+          "300",
+          "400",
+          "500",
+          "600",
+          "700",
+          "800",
+          "900"
+        ],
         "label": "Headline Font Weight"
       }
     },
@@ -89,7 +100,16 @@
     "subheadline_font_weight": {
       "type": "Select",
       "config": {
-        "options": ["200", "300", "400", "500", "600", "700", "800", "900"],
+        "options": [
+          "200",
+          "300",
+          "400",
+          "500",
+          "600",
+          "700",
+          "800",
+          "900"
+        ],
         "label": "Subheadline Font Weight"
       }
     },
@@ -111,7 +131,16 @@
     "body_font_weight": {
       "type": "Select",
       "config": {
-        "options": ["200", "300", "400", "500", "600", "700", "800", "900"],
+        "options": [
+          "200",
+          "300",
+          "400",
+          "500",
+          "600",
+          "700",
+          "800",
+          "900"
+        ],
         "label": "Body Font Weight"
       }
     },
@@ -133,7 +162,16 @@
     "button_font_weight": {
       "type": "Select",
       "config": {
-        "options": ["200", "300", "400", "500", "600", "700", "800", "900"],
+        "options": [
+          "200",
+          "300",
+          "400",
+          "500",
+          "600",
+          "700",
+          "800",
+          "900"
+        ],
         "label": "Button Font Weight"
       }
     },
@@ -288,7 +326,10 @@
               "variant": {
                 "type": "Select",
                 "config": {
-                  "options": ["Auto height", "Full viewport height"],
+                  "options": [
+                    "Auto height",
+                    "Full viewport height"
+                  ],
                   "default_value": "Auto height",
                   "label": "Variant"
                 }
@@ -472,7 +513,10 @@
               "image_side": {
                 "type": "Select",
                 "config": {
-                  "options": ["Left", "Right"],
+                  "options": [
+                    "Left",
+                    "Right"
+                  ],
                   "default_value": "Left",
                   "label": "Image Side"
                 }
@@ -614,7 +658,10 @@
               "image_side": {
                 "type": "Select",
                 "config": {
-                  "options": ["Left", "Right"],
+                  "options": [
+                    "Left",
+                    "Right"
+                  ],
                   "default_value": "Left",
                   "label": "Image Side"
                 }
@@ -959,6 +1006,62 @@
                 "type": "Text",
                 "config": {
                   "label": "Vimeo URL"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "text_with_media": {
+            "type": "Slice",
+            "fieldset": "Text With Media",
+            "description": "Side-by-side text and media",
+            "icon": "image_aspect_ratio",
+            "display": "list",
+            "non-repeat": {
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
+                }
+              },
+              "headline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Headline Color"
+                }
+              },
+              "subheadline_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Subheadline Color"
+                }
+              },
+              "text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Text Color"
+                }
+              },
+              "link_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Link Color"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading1,heading2,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Text"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
                 }
               }
             },
