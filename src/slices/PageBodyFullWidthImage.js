@@ -22,8 +22,6 @@ export const PageBodyFullWidthImage = ({
 }) => {
   const variant = variants[variantName]
 
-  return null
-
   return (
     <Box as="section" {...props}>
       <Image
