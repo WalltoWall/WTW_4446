@@ -42,12 +42,14 @@ export const PageBodyTextWithMedia = ({
       <BoundedBox as="section" bg="background" {...props}>
         <StandardGrid gridAutoFlow="column dense" alignItems="start">
           <Box gridColumn={['1 / -1', null, '7 / -1']}>
-            <Image
-              fluid={imageFluid}
-              src={imageURL}
-              alt={imageAlt}
-              objectFit="contain"
-            />
+            {imageFluid && (
+              <Image
+                fluid={imageFluid}
+                src={imageURL}
+                alt={imageAlt}
+                objectFit="contain"
+              />
+            )}
           </Box>
 
           <HTMLContent

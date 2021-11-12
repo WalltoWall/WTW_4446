@@ -68,6 +68,7 @@ export const PageTemplate = ({ data, location, ...props }) => {
             ),
         )}
       </Helmet>
+
       <ThemeProvider theme={fontsTheme}>
         <Text fontFamily="body" lineHeight="body" fontWeight="body">
           <GlobalStyles fontSize={page?.data?.base_font_size} />

@@ -22,9 +22,10 @@ export const PageBodyFullWidthImage = ({
 }) => {
   const variant = variants[variantName]
 
+  return null
+
   return (
     <Box as="section" {...props}>
-      {/*
       <Image
         display={[null, 'none']}
         fluid={mobileImageFluid}
@@ -32,7 +33,7 @@ export const PageBodyFullWidthImage = ({
         alt={mobileImageAlt}
         height={variant.imageHeight}
       />
-      */}
+
       <Image
         // display={['none', 'block']}
         fluid={imageFluid}
