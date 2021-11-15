@@ -33,7 +33,7 @@ export const PageBodyFullWidthImage = ({
       />
 
       <Image
-        // display={['none', 'block']}
+        display={['none', 'block']}
         fluid={imageFluid}
         src={imageURL}
         alt={imageAlt}
