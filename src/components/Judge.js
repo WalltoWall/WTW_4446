@@ -69,12 +69,17 @@ export const Judge = ({
           </Heading>
         )}
         {jobTitle && (
-          <Text as="p" mbScale="t-">
+          <Text as="p" mbScale="t-" style={{ whiteSpace: 'pre-line' }}>
             {jobTitle}
           </Text>
         )}
         {location && (
-          <Subheading as="p" color="body" mbScale="t-">
+          <Subheading
+            as="p"
+            color="body"
+            mbScale="t-"
+            style={{ whiteSpace: 'pre-line' }}
+          >
             {location}
           </Subheading>
         )}
