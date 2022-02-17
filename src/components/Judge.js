@@ -40,16 +40,18 @@ export const Judge = ({
       pxScale="l"
       {...props}
     >
-      <Image
-        fluid={imageFluid}
-        src={imageURL}
-        alt={imageAlt}
-        objectFit="contain"
-        width="75%"
-        height="auto"
-        gridColumn={['auto', imageIsOnLeft ? 1 : 2]}
-        justifySelf={[null, imageIsOnLeft ? 'end' : 'start']}
-      />
+      {(imageFluid || imageURL) && (
+        <Image
+          fluid={imageFluid}
+          src={imageURL}
+          alt={imageAlt}
+          objectFit="contain"
+          width="75%"
+          height="auto"
+          gridColumn={['auto', imageIsOnLeft ? 1 : 2]}
+          justifySelf={[null, imageIsOnLeft ? 'end' : 'start']}
+        />
+      )}
 
       <Text
         display={[null, 'flex']}

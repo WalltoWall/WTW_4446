@@ -24,21 +24,25 @@ export const PageBodyFullWidthImage = ({
 
   return (
     <Box as="section" {...props}>
-      <Image
-        display={[null, 'none']}
-        fluid={mobileImageFluid}
-        src={mobileImageURL}
-        alt={mobileImageAlt}
-        height={variant.imageHeight}
-      />
+      {(mobileImageFluid || mobileImageURL) && (
+        <Image
+          display={[null, 'none']}
+          fluid={mobileImageFluid}
+          src={mobileImageURL}
+          alt={mobileImageAlt}
+          height={variant.imageHeight}
+        />
+      )}
 
-      <Image
-        display={['none', 'block']}
-        fluid={imageFluid}
-        src={imageURL}
-        alt={imageAlt}
-        height={variant.imageHeight}
-      />
+      {(imageFluid || imageURL) && (
+        <Image
+          display={['none', 'block']}
+          fluid={imageFluid}
+          src={imageURL}
+          alt={imageAlt}
+          height={variant.imageHeight}
+        />
+      )}
     </Box>
   )
 }

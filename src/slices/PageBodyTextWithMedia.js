@@ -42,7 +42,7 @@ export const PageBodyTextWithMedia = ({
       <BoundedBox as="section" bg="background" {...props}>
         <StandardGrid gridAutoFlow="column dense" alignItems="start">
           <Box gridColumn={['1 / -1', null, '7 / -1']}>
-            {imageFluid && (
+            {(imageFluid || imageURL) && (
               <Image
                 fluid={imageFluid}
                 src={imageURL}
